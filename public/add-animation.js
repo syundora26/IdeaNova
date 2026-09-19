@@ -48,16 +48,14 @@
     return true;
   }
 
-  // タブごとに 1 回。例外時は「再生しない」側に倒す。再生を決めた時点で書く
+  // トップページを読み込むたびに毎回再生する(再読み込みでも出る)。
+  // サイト内のページ移動(ハッシュ遷移)でトップに戻った時は、ページの読み込みではないので出ない。
+  // 以前の「タブごとに 1 回」用の記録が残っていれば掃除しておく
   function claimIntro() {
     try {
-      var ss = win.sessionStorage;
-      if (ss.getItem(INTRO_KEY)) return false;
-      ss.setItem(INTRO_KEY, '1');
-      return true;
-    } catch (e) {
-      return false;
-    }
+      win.sessionStorage.removeItem(INTRO_KEY);
+    } catch (e) {}
+    return true;
   }
 
   // スマホ・タブレット(タッチ操作)と、極端に非力な PC はフェード版にする。
