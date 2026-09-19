@@ -306,11 +306,176 @@
     }
   }
 
+  /* ---------- E. 水滴(企業サイトの全ページ・静止した装飾) ---------- */
+
+  // 1行 = 水滴1つ。
+  // [グループ, 大きさpx, 横位置vw(正=左端から / 負=右端から), 縦のずれpx, 縦位置(本文の高さに対する割合), 傾きdeg, 1=スマホでは省く]
+  // 各グループの先頭が「主役の大きい水滴」。主役が出せない場所(文字と重なる等)ではグループごと出さない
+  var DEW = [
+    [1, 22, -1.2, 210, 0, -8], [1, 7, -2.7, 256, 0, 12], [1, 5, -0.7, 274, 0, 0, 1],
+    [2, 16, 1.7, 0, 0.13, 6], [2, 6, 3.3, 34, 0.13, -10],
+    [3, 18, -1.0, 0, 0.24, 4], [3, 6, -2.5, 30, 0.24, 0],
+    [4, 24, 2.0, 0, 0.4, -6], [4, 8, 0.9, 44, 0.4, 10], [4, 5, 3.9, 20, 0.4, 0, 1],
+    [5, 14, -1.2, 0, 0.57, 8], [5, 6, -2.6, 26, 0.57, -6],
+    [6, 20, 1.5, 0, 0.73, 5], [6, 7, 3.4, 36, 0.73, -12],
+    [7, 16, -1.1, 0, 0.88, -5], [7, 5, -2.8, 14, 0.88, 0, 1], [7, 8, -0.5, 40, 0.88, 9]
+  ];
+  // グループごとの「本文がこの高さ(px)以上のページでだけ出す」。短いページほど数を減らす
+  var DEW_MIN_H = { 1: 0, 4: 0, 7: 1400, 2: 2000, 5: 2000, 3: 3200, 6: 3200 };
+  var DEW_MOBILE_K = 0.62; // スマホ幅での縮小率(CSS の @media (max-width: 767px) と一致)
+  // 文字と重なる時に試す上下のずらし量(px)。先頭から順に試し、最初に空いていた位置を使う
+  var DEW_SHIFTS = [0, 70, -70, 140, -140, 210, -210, 280, -280];
+
+  function isCosmeticsSite() {
+    var loc = win.location;
+    return (loc.hostname + (loc.pathname || '')).indexOf('cosmetics') !== -1 || loc.port === '5179';
+  }
+
+  // 左右の余白付近にある文字・操作部品の矩形(ページ座標)。水滴が重ならないようにするための材料
+  function edgeRects(scope, vw) {
+    var out = [];
+    var sx = win.pageXOffset;
+    var sy = win.pageYOffset;
+    var band = vw * 0.06 + 40; // 水滴は両端の約6vw以内にしか置かないので、その帯だけ調べる
+    function push(r) {
+      if (r.width < 1 || r.height < 1) return;
+      if (r.left > band && r.right < vw - band) return;
+      out.push([r.left + sx, r.top + sy, r.right + sx, r.bottom + sy]);
+    }
+    var walker = doc.createTreeWalker(scope, 4 /* NodeFilter.SHOW_TEXT */, null);
+    var range = doc.createRange();
+    var node;
+    while ((node = walker.nextNode())) {
+      if (!/\S/.test(node.nodeValue)) continue;
+      range.selectNodeContents(node);
+      var rs = range.getClientRects();
+      for (var i = 0; i < rs.length; i++) push(rs[i]);
+    }
+    var ctrls = scope.querySelectorAll('button, input, textarea, select, a.ref-pill, a.ref-footer-contact, a.corporate-header-shop');
+    for (var j = 0; j < ctrls.length; j++) push(ctrls[j].getBoundingClientRect());
+    return out;
+  }
+
+  function initDew() {
+    var body = doc.body;
+    if (!body || !('ResizeObserver' in win) || isCosmeticsSite()) return;
+
+    var box = make('div', 'inv-dew');
+    box.setAttribute('aria-hidden', 'true');
+    var drops = [];
+    for (var i = 0; i < DEW.length; i++) {
+      var d = DEW[i];
+      var el = make('i', '');
+      // 見た目は CSS 側。ここで渡すのは大きさ・横位置・傾きだけ(CSS 未ロード時は何も表示されない)
+      el.style.cssText =
+        '--s:' + d[1] + 'px;' + (d[2] >= 0 ? '--l:' + d[2] + 'vw;' : '--r:' + -d[2] + 'vw;') + '--rot:' + d[5] + 'deg';
+      el.hidden = true;
+      box.appendChild(el);
+      drops.push(el);
+    }
+    body.appendChild(box); // #root の外(React 管理外)
+
+    var timer = 0;
+
+    function layout() {
+      timer = 0;
+      try {
+        var scope = doc.querySelector('.corporate-layout'); // ショップ・管理画面には無い = 出さない
+        var main = scope && scope.querySelector('main');
+        if (!main) {
+          box.removeAttribute('data-on');
+          return;
+        }
+        var vw = html.clientWidth;
+        var k = vw <= 767 ? DEW_MOBILE_K : 1;
+        var H = main.getBoundingClientRect().bottom + win.pageYOffset; // 本文の下端。フッターには置かない
+        var rects = edgeRects(scope, vw);
+
+        // その位置が空いているか。文字との余白: 横8px・縦26px
+        // (既存のフェードアップで文字が最大24px動くため縦は広め)。ヘッダー付近と本文の外も不可
+        var isFree = function (d, top) {
+          var s = d[1] * k;
+          var left = d[2] >= 0 ? (vw * d[2]) / 100 : vw - (vw * -d[2]) / 100 - s;
+          if (top < 96 || top + s * 1.1 > H) return false;
+          for (var m = 0; m < rects.length; m++) {
+            var r = rects[m];
+            // 大きな筆記体の飾り文字は字形が枠の外まではみ出すので、文字の高さに応じて横の余白を広げる
+            var mx = Math.max(8, Math.min(60, (r[3] - r[1]) * 0.2));
+            if (left - mx < r[2] && left + s + mx > r[0] && top - 26 < r[3] && top + s * 1.08 + 26 > r[1]) return false;
+          }
+          return true;
+        };
+
+        for (var n = 0; n < DEW.length; ) {
+          // 同じグループの範囲 [n, end)
+          var g = DEW[n][0];
+          var end = n;
+          while (end < DEW.length && DEW[end][0] === g) end++;
+
+          // 主役(先頭)の水滴が文字に当たるなら、グループごと上下にずらして空いている余白を探す
+          var lead = DEW[n];
+          var shift = null;
+          if (H >= DEW_MIN_H[g]) {
+            for (var t = 0; t < DEW_SHIFTS.length; t++) {
+              if (isFree(lead, lead[3] + H * lead[4] + DEW_SHIFTS[t])) {
+                shift = DEW_SHIFTS[t];
+                break;
+              }
+            }
+          }
+
+          for (var q = n; q < end; q++) {
+            var d = DEW[q];
+            var top = d[3] + H * d[4] + (shift || 0);
+            var show = shift !== null && !(k < 1 && d[6]) && isFree(d, top);
+            drops[q].style.top = Math.round(top) + 'px';
+            drops[q].hidden = !show;
+          }
+          n = end;
+        }
+        box.setAttribute('data-on', '');
+      } catch (e) {
+        box.removeAttribute('data-on');
+      }
+    }
+
+    // 画像・フォントの読み込みやページ移動で高さが変わるたびに、少し待ってから1回だけ置き直す
+    function schedule() {
+      if (!timer) timer = win.setTimeout(layout, 160);
+    }
+
+    function start() {
+      try {
+        var root = doc.getElementById('root');
+        if (!root) return;
+        new win.ResizeObserver(schedule).observe(root);
+        win.addEventListener('resize', schedule, PASSIVE);
+        win.addEventListener('hashchange', schedule, PASSIVE); // 高さが同じページ同士の移動でも置き直す
+        win.addEventListener('popstate', schedule, PASSIVE);
+        win.addEventListener('load', schedule, { once: true });
+        if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(schedule, function () {});
+        schedule();
+      } catch (e) {}
+    }
+
+    if (doc.readyState === 'loading') {
+      doc.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+      start();
+    }
+  }
+
   /* ---------- 起動 ---------- */
 
   try {
     if (isDisabled()) return;
-    // reduced-motion では JS の仕事は無い(現在地の下線は CSS だけで出る)
+
+    // 水滴は動きのない装飾なので reduced-motion でも出す(フェードインだけ CSS 側で止まる)
+    try {
+      initDew();
+    } catch (e) {}
+
+    // reduced-motion では以降の JS の仕事は無い(現在地の下線は CSS だけで出る)
     if (prefersReducedMotion()) return;
 
     var canFade = 'IntersectionObserver' in win && 'MutationObserver' in win && 'WeakSet' in win;

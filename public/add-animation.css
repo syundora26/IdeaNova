@@ -382,3 +382,94 @@
     transition: none;
   }
 }
+
+/* ==========================================================================
+   E. 水滴(企業サイトの全ページ・静止した装飾)
+      DOM と位置は JS(add-animation.js の DEW の表)が作る。ここは見た目だけ。
+      左右の余白に数か所だけ置き、文字・ボタンと重なる場所には JS が出さない。
+      光は左上から: 左上に小さなハイライト、右下の内側に明るい反射、右下の外に淡い影。
+      大きさは font-size(--s)で決め、影などは em で追従させている。
+   ========================================================================== */
+
+.inv-dew {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 15; /* 本文より上、ヘッダー(z-index: 20)とメニューより下 */
+  pointer-events: none;
+}
+
+.inv-dew:not([data-on]),
+.inv-dew i[hidden] {
+  display: none;
+}
+
+.inv-dew i {
+  position: absolute;
+  display: block;
+  font-size: var(--s, 12px);
+  width: 1em;
+  height: 1.08em; /* わずかに縦長 = 面に付いた水滴の形 */
+  left: var(--l, auto);
+  right: var(--r, auto);
+  transform: rotate(var(--rot, 0deg));
+  border-radius: 50% 50% 50% 50% / 46% 46% 54% 54%;
+  opacity: 0.92;
+  background:
+    radial-gradient(ellipse at 30% 24%, rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0.8) 5%, rgba(255, 255, 255, 0) 16%),
+    radial-gradient(ellipse at 66% 80%, rgba(255, 255, 255, 0.42) 0, rgba(255, 255, 255, 0) 44%),
+    radial-gradient(ellipse at 34% 30%, rgba(33, 60, 48, 0.14) 0, rgba(33, 60, 48, 0) 58%),
+    radial-gradient(ellipse at 50% 50%, rgba(33, 60, 48, 0) 58%, rgba(33, 60, 48, 0.12) 100%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 0 0 0.03em rgba(33, 60, 48, 0.16),
+    inset 0.06em 0.09em 0.14em rgba(33, 60, 48, 0.16),
+    inset -0.05em -0.08em 0.12em rgba(255, 255, 255, 0.6),
+    0.08em 0.16em 0.26em rgba(33, 60, 48, 0.2),
+    0 0 0.05em rgba(33, 60, 48, 0.22);
+}
+
+/* PC だけ、水滴越しの背景をわずかにぼかして明るくする(レンズらしさ)。スマホは負荷を避けて無し */
+@media (hover: hover) and (pointer: fine) {
+  .inv-dew i {
+    -webkit-backdrop-filter: blur(0.04em) brightness(1.05) saturate(1.15);
+    backdrop-filter: blur(0.04em) brightness(1.05) saturate(1.15);
+  }
+}
+
+/* スマホ幅は小さく(JS の DEW_MOBILE_K と同じ値にする) */
+@media (max-width: 767px) {
+  .inv-dew i {
+    font-size: calc(var(--s, 12px) * 0.62);
+  }
+}
+
+@media print {
+  .inv-dew {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .inv-dew {
+    display: none;
+  }
+}
+
+/* 出現時にふわっと現れるだけ(以後は動かない) */
+@media (prefers-reduced-motion: no-preference) {
+  .inv-dew[data-on] i {
+    animation: inv-dew-in 1.4s ease both;
+  }
+}
+
+@keyframes inv-dew-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.92;
+  }
+}
