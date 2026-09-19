@@ -1,0 +1,16 @@
+import '@fontsource/mrs-saint-delafield/400.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/500.css';
+import '@fontsource/noto-sans-jp/700.css';
+import '@fontsource/noto-serif-jp/400.css';
+import '@fontsource/noto-serif-jp/500.css';
+import '@fontsource/noto-serif-jp/600.css';
+import App from './App';
+import './styles.css';
+import './corporate.css';
+import './reference.css';
+import './editorial.css';
+import './business.css';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

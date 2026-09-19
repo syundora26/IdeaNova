@@ -1,0 +1,1096 @@
+{
+  "screens": [
+    "1440x900",
+    "1920x900",
+    "1920x1080",
+    "1440x1080",
+    "1024x900",
+    "768x1024",
+    "390x844",
+    "320x740",
+    "844x390"
+  ],
+  "sizes": [
+    {
+      "width": 1440,
+      "height": 900,
+      "scroll": 1440,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 819,
+        "bottom": 819
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1314.8125,
+        "bottom": 1314.8125
+      },
+      "business": {
+        "x": 0,
+        "y": 819,
+        "width": 1440,
+        "height": 495.8125,
+        "bottom": 1314.8125
+      },
+      "about": {
+        "x": 0,
+        "y": 1314.8125,
+        "width": 1440,
+        "height": 519.5625,
+        "bottom": 1834.375
+      },
+      "values": {
+        "x": 0,
+        "y": 1834.375,
+        "width": 1440,
+        "height": 342.34375,
+        "bottom": 2176.71875
+      },
+      "news": {
+        "x": 0,
+        "y": 2176.71875,
+        "width": 1440,
+        "height": 378.578125,
+        "bottom": 2555.296875
+      },
+      "footer": {
+        "x": 0,
+        "y": 2555.296875,
+        "width": 1440,
+        "height": 213.75,
+        "bottom": 2769.046875
+      },
+      "heads": [
+        {
+          "x": 54.71875,
+          "y": 914,
+          "width": 292.5625,
+          "height": 98.75,
+          "bottom": 1012.75
+        },
+        {
+          "x": 1026.03125,
+          "y": 914,
+          "width": 292.5625,
+          "height": 98.75,
+          "bottom": 1012.75
+        }
+      ],
+      "actions": [
+        {
+          "x": 54.71875,
+          "y": 1132.421875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1184.421875
+        },
+        {
+          "x": 1026.03125,
+          "y": 1132.421875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1184.421875
+        }
+      ],
+      "font": "18px",
+      "paddings": {
+        ".ref-business-duo": [
+          "60px",
+          "130.4px"
+        ],
+        ".ref-about": [
+          "0px",
+          "0px"
+        ],
+        ".ref-values": [
+          "82.4px",
+          "82.4px"
+        ],
+        ".ref-news": [
+          "82.4px",
+          "103.2px"
+        ],
+        ".ref-footer-main": [
+          "0px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 1920,
+      "height": 900,
+      "scroll": 1920,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 819,
+        "bottom": 819
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1341.671875,
+        "bottom": 1341.671875
+      },
+      "business": {
+        "x": 0,
+        "y": 819,
+        "width": 1920,
+        "height": 522.671875,
+        "bottom": 1341.671875
+      },
+      "about": {
+        "x": 0,
+        "y": 1341.671875,
+        "width": 1920,
+        "height": 541.953125,
+        "bottom": 1883.625
+      },
+      "values": {
+        "x": 0,
+        "y": 1883.625,
+        "width": 1920,
+        "height": 369.5625,
+        "bottom": 2253.1875
+      },
+      "news": {
+        "x": 0,
+        "y": 2253.1875,
+        "width": 1920,
+        "height": 401,
+        "bottom": 2654.1875
+      },
+      "footer": {
+        "x": 0,
+        "y": 2654.1875,
+        "width": 1920,
+        "height": 285,
+        "bottom": 2939.1875
+      },
+      "heads": [
+        {
+          "x": 240,
+          "y": 918,
+          "width": 320,
+          "height": 108,
+          "bottom": 1026
+        },
+        {
+          "x": 1291.203125,
+          "y": 918,
+          "width": 320,
+          "height": 108,
+          "bottom": 1026
+        }
+      ],
+      "actions": [
+        {
+          "x": 240,
+          "y": 1145.671875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1197.671875
+        },
+        {
+          "x": 1291.203125,
+          "y": 1145.671875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1197.671875
+        }
+      ],
+      "font": "18px",
+      "paddings": {
+        ".ref-business-duo": [
+          "64px",
+          "144px"
+        ],
+        ".ref-about": [
+          "0px",
+          "0px"
+        ],
+        ".ref-values": [
+          "96px",
+          "96px"
+        ],
+        ".ref-news": [
+          "96px",
+          "112px"
+        ],
+        ".ref-footer-main": [
+          "0px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scroll": 1920,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 880,
+        "bottom": 880
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1402.671875,
+        "bottom": 1402.671875
+      },
+      "business": {
+        "x": 0,
+        "y": 880,
+        "width": 1920,
+        "height": 522.671875,
+        "bottom": 1402.671875
+      },
+      "about": {
+        "x": 0,
+        "y": 1402.671875,
+        "width": 1920,
+        "height": 541.953125,
+        "bottom": 1944.625
+      },
+      "values": {
+        "x": 0,
+        "y": 1944.625,
+        "width": 1920,
+        "height": 369.5625,
+        "bottom": 2314.1875
+      },
+      "news": {
+        "x": 0,
+        "y": 2314.1875,
+        "width": 1920,
+        "height": 401,
+        "bottom": 2715.1875
+      },
+      "footer": {
+        "x": 0,
+        "y": 2715.1875,
+        "width": 1920,
+        "height": 285,
+        "bottom": 3000.1875
+      },
+      "heads": [
+        {
+          "x": 240,
+          "y": 979,
+          "width": 320,
+          "height": 108,
+          "bottom": 1087
+        },
+        {
+          "x": 1291.203125,
+          "y": 979,
+          "width": 320,
+          "height": 108,
+          "bottom": 1087
+        }
+      ],
+      "actions": [
+        {
+          "x": 240,
+          "y": 1206.671875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1258.671875
+        },
+        {
+          "x": 1291.203125,
+          "y": 1206.671875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1258.671875
+        }
+      ],
+      "font": "18px",
+      "paddings": {
+        ".ref-business-duo": [
+          "64px",
+          "144px"
+        ],
+        ".ref-about": [
+          "0px",
+          "0px"
+        ],
+        ".ref-values": [
+          "96px",
+          "96px"
+        ],
+        ".ref-news": [
+          "96px",
+          "112px"
+        ],
+        ".ref-footer-main": [
+          "0px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 1440,
+      "height": 1080,
+      "scroll": 1440,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 880,
+        "bottom": 880
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1375.8125,
+        "bottom": 1375.8125
+      },
+      "business": {
+        "x": 0,
+        "y": 880,
+        "width": 1440,
+        "height": 495.8125,
+        "bottom": 1375.8125
+      },
+      "about": {
+        "x": 0,
+        "y": 1375.8125,
+        "width": 1440,
+        "height": 519.5625,
+        "bottom": 1895.375
+      },
+      "values": {
+        "x": 0,
+        "y": 1895.375,
+        "width": 1440,
+        "height": 342.34375,
+        "bottom": 2237.71875
+      },
+      "news": {
+        "x": 0,
+        "y": 2237.71875,
+        "width": 1440,
+        "height": 378.578125,
+        "bottom": 2616.296875
+      },
+      "footer": {
+        "x": 0,
+        "y": 2616.296875,
+        "width": 1440,
+        "height": 213.75,
+        "bottom": 2830.046875
+      },
+      "heads": [
+        {
+          "x": 54.71875,
+          "y": 975,
+          "width": 292.5625,
+          "height": 98.75,
+          "bottom": 1073.75
+        },
+        {
+          "x": 1026.03125,
+          "y": 975,
+          "width": 292.5625,
+          "height": 98.75,
+          "bottom": 1073.75
+        }
+      ],
+      "actions": [
+        {
+          "x": 54.71875,
+          "y": 1193.421875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1245.421875
+        },
+        {
+          "x": 1026.03125,
+          "y": 1193.421875,
+          "width": 280,
+          "height": 52,
+          "bottom": 1245.421875
+        }
+      ],
+      "font": "18px",
+      "paddings": {
+        ".ref-business-duo": [
+          "60px",
+          "130.4px"
+        ],
+        ".ref-about": [
+          "0px",
+          "0px"
+        ],
+        ".ref-values": [
+          "82.4px",
+          "82.4px"
+        ],
+        ".ref-news": [
+          "82.4px",
+          "103.2px"
+        ],
+        ".ref-footer-main": [
+          "0px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "scroll": 1024,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 819,
+        "bottom": 819
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 1284.421875,
+        "bottom": 1284.421875
+      },
+      "business": {
+        "x": 0,
+        "y": 819,
+        "width": 1024,
+        "height": 465.421875,
+        "bottom": 1284.421875
+      },
+      "about": {
+        "x": 0,
+        "y": 1284.421875,
+        "width": 1024,
+        "height": 452.40625,
+        "bottom": 1736.828125
+      },
+      "values": {
+        "x": 0,
+        "y": 1736.828125,
+        "width": 1024,
+        "height": 313.21875,
+        "bottom": 2050.046875
+      },
+      "news": {
+        "x": 0,
+        "y": 2050.046875,
+        "width": 1024,
+        "height": 341.140625,
+        "bottom": 2391.1875
+      },
+      "footer": {
+        "x": 0,
+        "y": 2391.1875,
+        "width": 1024,
+        "height": 170.765625,
+        "bottom": 2561.953125
+      },
+      "heads": [
+        {
+          "x": 38.90625,
+          "y": 903.59375,
+          "width": 208,
+          "height": 70.21875,
+          "bottom": 973.8125
+        },
+        {
+          "x": 729.625,
+          "y": 903.59375,
+          "width": 208,
+          "height": 70.21875,
+          "bottom": 973.8125
+        }
+      ],
+      "actions": [
+        {
+          "x": 38.90625,
+          "y": 1116.59375,
+          "width": 274.390625,
+          "height": 52,
+          "bottom": 1168.59375
+        },
+        {
+          "x": 729.625,
+          "y": 1116.59375,
+          "width": 255.46875,
+          "height": 52,
+          "bottom": 1168.59375
+        }
+      ],
+      "font": "18px",
+      "paddings": {
+        ".ref-business-duo": [
+          "49.6px",
+          "115.84px"
+        ],
+        ".ref-about": [
+          "0px",
+          "0px"
+        ],
+        ".ref-values": [
+          "67.84px",
+          "67.84px"
+        ],
+        ".ref-news": [
+          "67.84px",
+          "80.32px"
+        ],
+        ".ref-footer-main": [
+          "0px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scroll": 768,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1011.75,
+        "bottom": 1011.75
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 768,
+        "height": 1011.75,
+        "bottom": 1011.75
+      },
+      "business": {
+        "x": 0,
+        "y": 1011.75,
+        "width": 768,
+        "height": 877.296875,
+        "bottom": 1889.046875
+      },
+      "about": {
+        "x": 0,
+        "y": 1889.046875,
+        "width": 768,
+        "height": 938.390625,
+        "bottom": 2827.4375
+      },
+      "values": {
+        "x": 0,
+        "y": 2827.4375,
+        "width": 768,
+        "height": 361.125,
+        "bottom": 3188.5625
+      },
+      "news": {
+        "x": 0,
+        "y": 3188.5625,
+        "width": 768,
+        "height": 494.65625,
+        "bottom": 3683.21875
+      },
+      "footer": {
+        "x": 0,
+        "y": 3683.21875,
+        "width": 768,
+        "height": 245,
+        "bottom": 3928.21875
+      },
+      "heads": [
+        {
+          "x": 46.078125,
+          "y": 1097.9375,
+          "width": 320,
+          "height": 108,
+          "bottom": 1205.9375
+        },
+        {
+          "x": 46.078125,
+          "y": 1514.984375,
+          "width": 320,
+          "height": 108,
+          "bottom": 1622.984375
+        }
+      ],
+      "actions": [
+        {
+          "x": 46.078125,
+          "y": 1333.609375,
+          "width": 240,
+          "height": 52,
+          "bottom": 1385.609375
+        },
+        {
+          "x": 46.078125,
+          "y": 1750.65625,
+          "width": 252.65625,
+          "height": 52,
+          "bottom": 1802.65625
+        }
+      ],
+      "font": "17px",
+      "paddings": {
+        ".ref-business-duo": [
+          "0px",
+          "0px"
+        ],
+        ".ref-about": [
+          "43.2px",
+          "43.2px"
+        ],
+        ".ref-values": [
+          "58.88px",
+          "58.88px"
+        ],
+        ".ref-news": [
+          "58.88px",
+          "67.2px"
+        ],
+        ".ref-footer-main": [
+          "40px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scroll": 390,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 704.140625,
+        "bottom": 704.140625
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 704.140625,
+        "bottom": 704.140625
+      },
+      "business": {
+        "x": 0,
+        "y": 704.140625,
+        "width": 390,
+        "height": 735.953125,
+        "bottom": 1440.09375
+      },
+      "about": {
+        "x": 0,
+        "y": 1440.09375,
+        "width": 390,
+        "height": 717.984375,
+        "bottom": 2158.078125
+      },
+      "values": {
+        "x": 0,
+        "y": 2158.078125,
+        "width": 390,
+        "height": 383.5625,
+        "bottom": 2541.640625
+      },
+      "news": {
+        "x": 0,
+        "y": 2541.640625,
+        "width": 390,
+        "height": 557.546875,
+        "bottom": 3099.1875
+      },
+      "footer": {
+        "x": 0,
+        "y": 3099.1875,
+        "width": 390,
+        "height": 496,
+        "bottom": 3595.1875
+      },
+      "heads": [
+        {
+          "x": 24,
+          "y": 787.140625,
+          "width": 237.125,
+          "height": 80,
+          "bottom": 867.140625
+        },
+        {
+          "x": 24,
+          "y": 1141.921875,
+          "width": 237.125,
+          "height": 80,
+          "bottom": 1221.921875
+        }
+      ],
+      "actions": [
+        {
+          "x": 24,
+          "y": 966.921875,
+          "width": 240,
+          "height": 52,
+          "bottom": 1018.921875
+        },
+        {
+          "x": 24,
+          "y": 1321.703125,
+          "width": 252.65625,
+          "height": 52,
+          "bottom": 1373.703125
+        }
+      ],
+      "font": "17px",
+      "paddings": {
+        ".ref-business-duo": [
+          "0px",
+          "0px"
+        ],
+        ".ref-about": [
+          "40px",
+          "40px"
+        ],
+        ".ref-values": [
+          "56px",
+          "56px"
+        ],
+        ".ref-news": [
+          "56px",
+          "64px"
+        ],
+        ".ref-footer-main": [
+          "56px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "scroll": 320,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 686.765625,
+        "bottom": 686.765625
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 686.765625,
+        "bottom": 686.765625
+      },
+      "business": {
+        "x": 0,
+        "y": 686.765625,
+        "width": 320,
+        "height": 782.921875,
+        "bottom": 1469.6875
+      },
+      "about": {
+        "x": 0,
+        "y": 1469.6875,
+        "width": 320,
+        "height": 742.34375,
+        "bottom": 2212.03125
+      },
+      "values": {
+        "x": 0,
+        "y": 2212.03125,
+        "width": 320,
+        "height": 468.375,
+        "bottom": 2680.40625
+      },
+      "news": {
+        "x": 0,
+        "y": 2680.40625,
+        "width": 320,
+        "height": 583.140625,
+        "bottom": 3263.546875
+      },
+      "footer": {
+        "x": 0,
+        "y": 3263.546875,
+        "width": 320,
+        "height": 540,
+        "bottom": 3803.546875
+      },
+      "heads": [
+        {
+          "x": 24,
+          "y": 769.765625,
+          "width": 224,
+          "height": 75.59375,
+          "bottom": 845.359375
+        },
+        {
+          "x": 24,
+          "y": 1148.03125,
+          "width": 224,
+          "height": 75.59375,
+          "bottom": 1223.625
+        }
+      ],
+      "actions": [
+        {
+          "x": 24,
+          "y": 973.03125,
+          "width": 240,
+          "height": 52,
+          "bottom": 1025.03125
+        },
+        {
+          "x": 24,
+          "y": 1351.296875,
+          "width": 252.65625,
+          "height": 52,
+          "bottom": 1403.296875
+        }
+      ],
+      "font": "17px",
+      "paddings": {
+        ".ref-business-duo": [
+          "0px",
+          "0px"
+        ],
+        ".ref-about": [
+          "40px",
+          "40px"
+        ],
+        ".ref-values": [
+          "56px",
+          "56px"
+        ],
+        ".ref-news": [
+          "56px",
+          "64px"
+        ],
+        ".ref-footer-main": [
+          "56px",
+          "0px"
+        ]
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "scroll": 844,
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 72,
+        "bottom": 72
+      },
+      "hero": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 1026.046875,
+        "bottom": 1026.046875
+      },
+      "photo": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 1026.046875,
+        "bottom": 1026.046875
+      },
+      "business": {
+        "x": 0,
+        "y": 1026.046875,
+        "width": 844,
+        "height": 884.921875,
+        "bottom": 1910.96875
+      },
+      "about": {
+        "x": 0,
+        "y": 1910.96875,
+        "width": 844,
+        "height": 975.921875,
+        "bottom": 2886.890625
+      },
+      "values": {
+        "x": 0,
+        "y": 2886.890625,
+        "width": 844,
+        "height": 366.4375,
+        "bottom": 3253.328125
+      },
+      "news": {
+        "x": 0,
+        "y": 3253.328125,
+        "width": 844,
+        "height": 500.53125,
+        "bottom": 3753.859375
+      },
+      "footer": {
+        "x": 0,
+        "y": 3753.859375,
+        "width": 844,
+        "height": 245,
+        "bottom": 3998.859375
+      },
+      "heads": [
+        {
+          "x": 50.625,
+          "y": 1114.140625,
+          "width": 320,
+          "height": 108,
+          "bottom": 1222.140625
+        },
+        {
+          "x": 50.625,
+          "y": 1535,
+          "width": 320,
+          "height": 108,
+          "bottom": 1643
+        }
+      ],
+      "actions": [
+        {
+          "x": 50.625,
+          "y": 1349.8125,
+          "width": 240,
+          "height": 52,
+          "bottom": 1401.8125
+        },
+        {
+          "x": 50.625,
+          "y": 1770.671875,
+          "width": 252.65625,
+          "height": 52,
+          "bottom": 1822.671875
+        }
+      ],
+      "font": "17px",
+      "paddings": {
+        ".ref-business-duo": [
+          "0px",
+          "0px"
+        ],
+        ".ref-about": [
+          "45.1px",
+          "45.1px"
+        ],
+        ".ref-values": [
+          "61.54px",
+          "61.54px"
+        ],
+        ".ref-news": [
+          "61.54px",
+          "70.42px"
+        ],
+        ".ref-footer-main": [
+          "40px",
+          "0px"
+        ]
+      }
+    }
+  ],
+  "audits": [
+    {
+      "width": 1440,
+      "height": 900,
+      "violations": []
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "violations": []
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "violations": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "violations": []
+    },
+    {
+      "width": 320,
+      "height": 740,
+      "violations": []
+    }
+  ],
+  "checks": [
+    "Nine viewports: FV fills the viewport minus a peek (600-880px), token spacing, aligned actions, stable 18px body on wide screens, stacked FV photograph spans the whole hero"
+  ],
+  "errors": [],
+  "failure": "Error: locator.evaluateAll: TypeError: Cannot read properties of null (reading 'getAttribute')\n    at eval (eval at evaluate (:311:30), <anonymous>:1:54)\n    at Array.map (<anonymous>)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:8)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+}

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ideanova",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server/start.mjs"],
+      "port": 5177,
+      "autoPort": false
+    }
+  ]
+}

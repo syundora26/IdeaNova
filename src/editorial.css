@@ -1,0 +1,144 @@
+/* Four reference compositions. All text and links remain live content. */
+.corporate-layout:has(.editorial-scene) .site-header{position:absolute;inset:0 0 auto;background:transparent}
+.corporate-layout .editorial-designed,.corporate-layout .company-scene-page{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 10% 25%,#fffaf6aa,transparent 55%),var(--paper)}
+.corporate-layout .editorial-scene{position:relative;min-height:420px;height:30vw;max-height:510px;isolation:isolate}
+.corporate-layout .scene-defs{position:absolute;width:0;height:0}
+.corporate-layout .scene-photo{position:absolute;right:0;top:0;width:66%;height:100%;z-index:-1;background:#244b37}
+.corporate-layout .scene-photo>img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.78)}
+.corporate-layout .scene-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,#153d2e68)}
+.corporate-layout .scene-photo-copy{position:absolute;z-index:1;right:7%;top:32%;color:#fffaf1}
+.corporate-layout .scene-photo-copy>span{display:block;font:400 clamp(70px,7vw,112px)/1 'Mrs Saint Delafield',cursive;transform:rotate(-12deg);margin-bottom:20px}
+.corporate-layout .scene-photo-copy p{font-size:clamp(16px,1.5vw,23px);line-height:1.6;letter-spacing:.13em;margin:0 0 0 32px;text-shadow:0 1px 9px #21432c}
+.corporate-layout .scene-copy{padding:110px 0 60px;width:80%;margin:auto;position:relative;z-index:2;pointer-events:none}
+.corporate-layout .scene-copy a{pointer-events:auto}
+.corporate-layout .scene-copy .crumbs{margin-bottom:40px;font-size:14px}
+.corporate-layout .scene-copy h1{font-size:clamp(48px,5vw,80px);line-height:1.35;letter-spacing:.04em;margin:0 0 20px;font-weight:400}
+.corporate-layout .scene-copy h1 span{color:var(--vermilion)}
+.corporate-layout .scene-eyebrow{font-size:14px;letter-spacing:.22em;margin:0 0 20px;color:#647668}
+.corporate-layout .scene-lead{font-size:clamp(17px,1.6vw,24px);line-height:1.8;max-width:60%;margin:0}
+.corporate-layout .scene-leaves{position:absolute;pointer-events:none;user-select:none;width:200px;height:330px;object-fit:contain;left:-75px;top:155px;z-index:2;opacity:.68;mix-blend-mode:multiply}
+.corporate-layout .scene-journal .scene-photo{width:57%}
+.corporate-layout .scene-news .scene-photo{width:60%}
+.corporate-layout :is(.scene-news,.scene-journal) .scene-copy{padding-bottom:80px}
+.corporate-layout .scene-journal .scene-copy h1{font-size:clamp(44px,4.5vw,72px)}
+.corporate-layout .scene-journal .scene-lead{font-size:clamp(17px,1.4vw,22px)}
+.corporate-layout .editorial-content{position:relative;z-index:3;width:80%;max-width:1320px;margin:0 auto;padding:20px 0 0}
+.corporate-layout .editorial-designed .corporate-article-list{border-top:1px solid #213c3026}
+.corporate-layout .editorial-designed .corporate-article{grid-template-columns:240px minmax(0,1fr) 132px;gap:24px;min-height:84px;padding:24px 0;border-bottom:1px solid #213c3026;background:transparent;border-radius:0;color:var(--forest)}
+.corporate-layout .editorial-designed .corporate-article :is(h2,h3){font-size:clamp(18px,1.5vw,24px);font-weight:400;line-height:1.7;margin:0}
+.corporate-layout .editorial-designed .corporate-article-meta{font-size:14px;gap:16px;grid-column:auto}
+.corporate-layout .editorial-designed .corporate-article-meta span{background:#e7eadf;padding:5px 10px}
+.corporate-layout .editorial-designed .corporate-read-label{font-size:16px;display:inline-flex;align-items:center;justify-content:flex-start;gap:12px;min-height:44px;white-space:nowrap}
+.corporate-layout .editorial-designed .corporate-article:hover h2{color:var(--vermilion)}
+.corporate-layout .editorial-designed .corporate-article:focus-visible{outline:2px solid var(--vermilion);outline-offset:6px}
+.corporate-layout .editorial-designed .demo-note{margin:30px 0 0;padding:18px 20px;border:0;border-left:2px solid #527364;background:#e7eadfc9;border-radius:0;color:var(--forest);font-size:14px;line-height:1.7}
+.corporate-layout .editorial-closing{position:relative;height:145px;margin-top:10px;z-index:0;pointer-events:none}
+.corporate-layout .editorial-closing>img{position:absolute;left:0;bottom:0;width:52%;height:360px;object-fit:cover;opacity:.35;-webkit-mask-image:linear-gradient(to right,#000 35%,transparent 92%),linear-gradient(to top,#000 25%,transparent 90%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,#000 35%,transparent 92%),linear-gradient(to top,#000 25%,transparent 90%);mask-composite:intersect}
+.corporate-layout .editorial-closing>svg{position:absolute;width:100%;height:100%;bottom:0}
+.corporate-layout .editorial-end-leaves{left:auto;top:auto;right:-90px;bottom:-40px;width:200px;transform:rotate(-40deg);opacity:.55;z-index:0}
+.corporate-layout .editorial-journal .editorial-content{width:88%;padding-top:0;margin-top:-30px}
+.corporate-layout .editorial-journal .corporate-article-cards{gap:4vw}
+.corporate-layout .editorial-journal .corporate-article{display:flex;flex-direction:column;align-items:stretch;padding:0 0 12px;gap:18px;min-width:0}
+.corporate-layout .editorial-journal .corporate-article>img{width:100%;height:auto;aspect-ratio:1.72;object-fit:cover;border-radius:40% 60% 12% 10% / 35% 25% 18% 10%;margin-bottom:0}
+.corporate-layout .editorial-journal .corporate-article:nth-child(even)>img{border-radius:34% 4% 24% 5% / 36% 4% 12% 10%}
+.corporate-layout .editorial-journal .corporate-article>img[src*="reference-products"]{background:#f2d8ca url('/images/reference-flower-finish-800.webp') center/cover;object-fit:contain}
+.corporate-layout .editorial-journal .corporate-article h2{font-size:clamp(23px,2.2vw,34px)}
+.corporate-layout .editorial-journal .corporate-read-label{width:145px;border-bottom:1px solid #73847a;margin-top:auto}
+.corporate-layout .editorial-detail .editorial-content{max-width:900px;padding:45px 0 100px;margin:auto;width:calc(100% - 40px)}
+.corporate-layout .editorial-detail article{margin-top:45px}
+.corporate-layout .editorial-detail article h1{font-size:clamp(28px,3.4vw,48px);line-height:1.6}
+.corporate-layout .editorial-detail article>img{width:100%;max-height:480px;object-fit:cover;border-radius:40% 4% 25% 4% / 18% 4% 12% 4%;margin-bottom:32px}
+.corporate-layout .editorial-detail article>p{font-size:18px;line-height:2;white-space:pre-line}
+.corporate-layout .editorial-detail .corporate-button{margin-top:30px}
+.corporate-layout .scene-company{height:55vw;min-height:590px;max-height:820px}
+.corporate-layout .scene-company .scene-photo{width:57%}
+.corporate-layout .scene-company .scene-copy{width:81%;padding-top:100px}
+.corporate-layout .scene-company .crumbs{margin-bottom:55px}
+.corporate-layout .scene-company h1{font-size:clamp(64px,7vw,100px);margin-bottom:15px}
+.corporate-layout .scene-company .scene-lead{font-size:clamp(23px,2.65vw,38px)}
+.corporate-layout .scene-description{font-size:clamp(15px,1.3vw,19px);line-height:1.85;margin:24px 0 0 20px}
+.corporate-layout .scene-company .scene-photo-copy{top:20%;right:8%}
+.corporate-layout .scene-company .scene-photo-copy p{writing-mode:vertical-rl;margin:35px 0 0 auto}
+.corporate-layout .scene-company>.scene-leaves{top:auto;bottom:70px;width:240px;height:370px}
+.corporate-layout .company-introduction{position:relative;min-height:360px;padding:50px 7.5% 60px;margin-top:-70px;isolation:isolate}
+.corporate-layout .company-introduction:before{content:'';position:absolute;inset:0;z-index:-1;background:var(--paper);border-radius:45% 55% 0 0 / 12% 18% 0 0}
+.corporate-layout .company-introduction-copy{position:relative;z-index:2;width:63%;padding-top:25px}
+.corporate-layout .company-introduction h2{font-size:clamp(26px,3vw,43px);line-height:1.5;margin:0 0 34px}
+.corporate-layout .company-introduction h2:before,.corporate-layout .company-facts-copy:before{content:'';display:block;width:40px;height:2px;background:var(--vermilion);margin-bottom:30px}
+.corporate-layout .company-introduction p{font-size:clamp(15px,1.4vw,20px);line-height:1.9}
+.corporate-layout .company-connect{position:absolute;right:0;top:70px;width:42%;height:calc(100% - 70px);overflow:hidden;border-radius:60% 0 0 80% / 30% 0 0 60%;z-index:0;background:#e9ddd2}
+.corporate-layout .company-connect>img{width:100%;height:100%;object-fit:cover;opacity:.62;filter:saturate(.8)}
+.corporate-layout .company-connect::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,#f8f5ee66,#f6efe6c7 70%)}
+.corporate-layout .company-connect>p{z-index:1}
+.corporate-layout .company-connect>p{position:absolute;right:10%;top:20%;font-size:22px;line-height:1.5}
+.corporate-layout .company-connect small{display:block;font-size:14px;letter-spacing:.12em;margin-top:32px;line-height:1.6}
+.corporate-layout .company-middle-leaves{left:auto;right:15%;top:auto;bottom:16px;transform:rotate(-30deg);width:150px;height:230px}
+.corporate-layout .company-facts{position:relative;padding:65px 7.5%;min-height:500px;border-top:1px solid #213c3010;background:linear-gradient(170deg,#f0eee633,transparent 45%)}
+.corporate-layout .company-facts-copy{width:62%;position:relative;z-index:2}
+.corporate-layout .company-facts h2{font-size:clamp(36px,4vw,58px);margin:0 0 40px}
+.corporate-layout .company-facts dl{margin:0}
+.corporate-layout .company-facts dl>div{display:grid;grid-template-columns:32% 1fr;gap:24px;padding:23px 0;border-bottom:1px solid #213c3025;font-size:clamp(14px,1.4vw,20px)}
+.corporate-layout .company-facts dt{border-right:1px solid #213c3025;font-weight:400}
+.corporate-layout .company-facts dd{margin:0;line-height:1.7}
+.corporate-layout .company-facts small{font-size:.8em}
+.corporate-layout .company-future{position:absolute;right:0;top:45px;width:38%;height:85%;max-height:480px;margin:0;overflow:hidden;border-radius:65% 0 0 85% / 40% 0 0 55%;background:#163f30}
+.corporate-layout .company-future>img{width:100%;height:100%;object-fit:cover;object-position:78% 70%;transform:scale(1.55);transform-origin:78% 70%;opacity:.92}
+.corporate-layout .company-future>span{position:absolute;top:20%;right:8%;font:100px/1 'Mrs Saint Delafield',cursive;color:#fff;transform:rotate(-12deg)}
+.corporate-layout .company-future figcaption{position:absolute;right:6%;bottom:12%;color:#fff;text-shadow:0 1px 8px #123326;font-size:20px;line-height:1.7}
+.corporate-layout .company-future small{display:block;font-size:14px;margin-top:12px}
+.corporate-layout .company-promise{position:relative;text-align:center;padding:65px 24px 95px;isolation:isolate}
+.corporate-layout .company-promise h2{font-size:clamp(22px,2.3vw,34px);margin:0 0 16px}
+.corporate-layout .company-promise p{font-size:17px;margin:0}
+.corporate-layout .company-promise .scene-leaves{top:-100px;left:-30px;width:220px;height:340px;z-index:-1;transform:rotate(25deg)}
+.corporate-layout .company-promise .promise-right{left:auto;right:-20px;transform:rotate(-50deg)}
+@media(max-width:1100px) and (min-width:761px){
+ .corporate-layout .scene-copy{width:84%}.corporate-layout .scene-copy h1{font-size:54px}
+ .corporate-layout .editorial-content{width:84%}.corporate-layout .editorial-designed .corporate-article{grid-template-columns:205px minmax(0,1fr) 115px;gap:15px}
+ .corporate-layout .company-introduction-copy{width:66%}.corporate-layout .company-connect>p{font-size:18px}
+ .corporate-layout .company-facts-copy{width:65%}.corporate-layout .company-facts dl>div{gap:15px}
+}
+@media(max-width:1000px){
+ .corporate-layout:has(.editorial-scene) .site-header{position:relative;background:var(--paper)}
+ .corporate-layout .editorial-scene{height:auto;max-height:none;min-height:520px;padding-bottom:250px}
+ .corporate-layout .scene-copy{padding:24px 0 20px;width:calc(100% - 40px)}
+ .corporate-layout .scene-copy .crumbs{margin-bottom:28px;font-size:14px}
+ .corporate-layout .scene-copy h1{font-size:clamp(36px,7vw,52px);margin-bottom:18px}
+ .corporate-layout .scene-lead{font-size:17px;max-width:100%}
+ .corporate-layout .scene-eyebrow{font-size:13px;margin-bottom:12px}
+ .corporate-layout .scene-photo{width:100%;height:260px;top:auto;bottom:0}
+ .corporate-layout .scene-journal .scene-photo{width:100%}.corporate-layout .scene-journal .scene-copy h1{font-size:clamp(36px,7vw,52px)}
+ .corporate-layout .scene-photo-copy{top:26%;right:8%}.corporate-layout .scene-photo-copy>span{font-size:64px;margin-bottom:6px}
+ .corporate-layout .scene-photo-copy p{font-size:15px;margin-left:20px}
+ .corporate-layout .scene-leaves{width:90px;height:180px;left:-62px;top:100px;opacity:.18}
+ .corporate-layout .editorial-content,.corporate-layout .editorial-journal .editorial-content{width:calc(100% - 40px);margin-top:12px;padding-top:0}
+ .corporate-layout .editorial-designed .corporate-article{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:20px 0}
+ .corporate-layout .editorial-designed .corporate-article-meta{font-size:14px}
+ .corporate-layout .editorial-designed .corporate-article h2{font-size:21px}
+ .corporate-layout .editorial-designed .corporate-read-label{align-self:flex-end;width:130px;font-size:14px}
+ .corporate-layout .editorial-journal .corporate-article-cards{grid-template-columns:1fr;gap:32px}
+ .corporate-layout .editorial-journal .corporate-article{padding-top:0}
+ .corporate-layout .editorial-journal .corporate-read-label{align-self:flex-start}
+ .corporate-layout .editorial-end-leaves{left:auto;right:-50px;bottom:60px;top:auto;opacity:.45}
+ .corporate-layout .editorial-closing{height:90px}.corporate-layout .editorial-closing>img{height:180px;width:85%}
+ .corporate-layout .scene-company{padding-bottom:310px;min-height:0}
+ .corporate-layout .scene-company .scene-copy{padding-top:24px;width:calc(100% - 40px)}
+ .corporate-layout .scene-company .scene-photo{width:100%;height:320px}
+ .corporate-layout .scene-company h1{font-size:58px}.corporate-layout .scene-company .scene-lead{font-size:24px}
+ .corporate-layout .scene-description{font-size:15px;margin:20px 0 0}
+ .corporate-layout .scene-company .scene-photo-copy{top:15%}.corporate-layout .scene-company .scene-photo-copy p{margin-top:12px}
+ .corporate-layout .company-introduction{padding:24px 20px 0;margin-top:-25px}
+ .corporate-layout .company-introduction-copy{width:100%}.corporate-layout .company-introduction h2{font-size:25px;margin-bottom:25px}
+ .corporate-layout .company-introduction p{font-size:16px}.corporate-layout .company-introduction-copy br{display:none}
+ .corporate-layout .company-connect{position:relative;top:auto;width:calc(100% + 20px);height:260px;margin-top:28px;border-radius:60% 0 0 0 / 22% 0 0 0}
+ .corporate-layout .company-connect>p{top:8%;font-size:19px}
+ .corporate-layout .company-facts{padding:48px 20px;min-height:0}.corporate-layout .company-facts-copy{width:100%}
+ .corporate-layout .company-facts h2{font-size:36px;margin-bottom:24px}
+ .corporate-layout .company-facts dl>div{grid-template-columns:1fr;gap:8px;font-size:16px;padding:18px 0}
+ .corporate-layout .company-facts dt{border:0;font-size:14px;color:#65766b}
+ .corporate-layout .company-future{position:relative;top:auto;width:calc(100% + 20px);height:300px;margin-top:32px}
+ .corporate-layout .company-future>span{font-size:85px}.corporate-layout .company-future figcaption{font-size:17px}
+ .corporate-layout .company-promise{padding:20px 28px 70px}.corporate-layout .company-promise h2{font-size:24px;line-height:1.8}
+ .corporate-layout .company-promise p{font-size:15px;line-height:1.8}
+ .corporate-layout .company-promise .scene-leaves{width:120px;opacity:.25}
+ .corporate-layout .editorial-detail .editorial-content{padding-top:24px}.corporate-layout .editorial-detail article>p{font-size:16px}
+}

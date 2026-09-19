@@ -1,0 +1,7 @@
+{
+  "sizes": [],
+  "audits": [],
+  "checks": [],
+  "errors": [],
+  "failure": "Error: expect(received).toBeLessThan(expected)\n\nExpected: < 866\nReceived:   1284.421875"
+}

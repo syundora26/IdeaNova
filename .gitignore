@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.npm-cache/
+vite-*.log
+qa/*.png
+qa/*.html
+reference/
+
+.env
+.env.local
+.env.*.local
+qa/separation/*.pid

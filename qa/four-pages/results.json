@@ -1,0 +1,95 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/company",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/news",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/journal",
+      "width": 1440,
+      "scroll": 1440,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/",
+      "width": 768,
+      "scroll": 768,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/company",
+      "width": 768,
+      "scroll": 768,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/news",
+      "width": 768,
+      "scroll": 768,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/journal",
+      "width": 768,
+      "scroll": 768,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/",
+      "width": 375,
+      "scroll": 375,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/company",
+      "width": 375,
+      "scroll": 375,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/news",
+      "width": 375,
+      "scroll": 375,
+      "broken": 0,
+      "headings": 1
+    },
+    {
+      "path": "/journal",
+      "width": 375,
+      "scroll": 375,
+      "broken": 0,
+      "headings": 1
+    }
+  ],
+  "errors": [],
+  "links": [
+    "news detail and return",
+    "journal detail and return",
+    "mobile menu, company, contact",
+    "cosmetics site"
+  ]
+}
