@@ -376,6 +376,7 @@
     body.appendChild(box); // #root の外(React 管理外)
 
     var timer = 0;
+    var settled = false;
 
     function layout() {
       timer = 0;
@@ -391,6 +392,9 @@
         var H = main.getBoundingClientRect().bottom + win.pageYOffset; // 本文の下端。フッターには置かない
         var rects = edgeRects(scope, vw);
 
+        // PC では既存のフェードインが文字を横に最大30px動かす(飾り文字・お知らせ行)ので、その分も空ける
+        var shiftX = k < 1 ? 0 : 30;
+
         // その位置が空いているか。文字との余白: 横8px・縦26px
         // (既存のフェードアップで文字が最大24px動くため縦は広め)。ヘッダー付近と本文の外も不可
         var isFree = function (d, top) {
@@ -400,7 +404,7 @@
           for (var m = 0; m < rects.length; m++) {
             var r = rects[m];
             // 大きな筆記体の飾り文字は字形が枠の外まではみ出すので、文字の高さに応じて横の余白を広げる
-            var mx = Math.max(8, Math.min(60, (r[3] - r[1]) * 0.2));
+            var mx = Math.max(8, Math.min(60, (r[3] - r[1]) * 0.2)) + shiftX;
             if (left - mx < r[2] && left + s + mx > r[0] && top - 26 < r[3] && top + s * 1.08 + 26 > r[1]) return false;
           }
           return true;
@@ -436,6 +440,16 @@
         box.setAttribute('data-on', '');
       } catch (e) {
         box.removeAttribute('data-on');
+      }
+      // 既存のフェードインで文字が動き終わった頃に、もう一度だけ置き直す
+      if (!settled) {
+        settled = true;
+        win.setTimeout(function () {
+          schedule();
+          win.setTimeout(function () {
+            settled = false;
+          }, 400);
+        }, 3200);
       }
     }
 
