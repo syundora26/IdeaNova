@@ -1,0 +1,380 @@
+@charset "UTF-8";
+/* ==========================================================================
+   add-animation.css — IdeaNova 後付けアニメーション(add-animation.js と対)
+
+   設置: public/ に置き、index.html の <head> で <link rel="stylesheet"> 読み込み。
+         JS は <body> 先頭(<div id="root"> の直前)に defer なしの <script src>。
+   方針: 既存 GSAP が inline style で制御する要素(a.ref-pill / a.ref-text-link 自体、
+         .ref-news-row、.corporate-value、ヒーロー各要素など)には
+         transform / opacity / animation / transition を一切指定しない。
+         動かすのは「その子要素」と「未使用の疑似要素」だけ。
+         マイクロインタラクションは全て .corporate-layout 配下(ショップ側へ影響なし)。
+         クラス・変数の接頭辞は inv- で統一。
+   ========================================================================== */
+
+:root {
+  --inv-ease: cubic-bezier(0.22, 1, 0.36, 1); /* サイト標準イージング */
+}
+
+/* ==========================================================================
+   A. しずく→波紋イントロ(DOM は JS が #root の外に挿入し、終了後に丸ごと消す)
+      タイムラインは全て @keyframes + delay。JS のタイマーには依存しない。
+   ========================================================================== */
+
+.inv-intro {
+  --inv-x: 50%; /* 着水点 */
+  --inv-y: 46%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0;
+  z-index: 2147483000;
+  overflow: hidden;
+  /* 覆っている間は、見えていないリンクへの誤クリックを受け止める(着水・スキップで解放) */
+  pointer-events: auto;
+  contain: strict;
+  /* フェイルセーフ: JS が途中で死んでも 2.4s で覆いごと不可視にする */
+  animation: inv-intro-failsafe 0.01s linear 2.4s forwards;
+}
+
+/* 着水後(JS が --open を付ける)とスキップ時は、下のページを操作できるようにする */
+.inv-intro--open,
+.inv-intro--skip {
+  pointer-events: none;
+}
+
+/* 覆い。「覆う」ためのスタイルは CSS 側だけに置く(CSS 未ロード時に本文が隠れない) */
+.inv-intro__veil {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0;
+  background: #e9ede2;
+  will-change: opacity; /* 再ペイントを本体のレイヤーから隔離する */
+}
+
+/* A案: 着水点から円形に開く。--inv-r は JS が <length> として登録(補間可能にする)。
+   単色の覆いなので mask は使わず、背景のグラデーションで直接「穴」を描く(合成が1段軽い)。
+   --inv-r が 0px の間は全面が単色 = 完全に覆われている */
+.inv-intro--mask .inv-intro__veil {
+  background: radial-gradient(
+    circle at var(--inv-x) var(--inv-y),
+    rgba(233, 237, 226, 0) calc(var(--inv-r) - 60px),
+    #e9ede2 var(--inv-r)
+  );
+  /* 着水から約0.7sで画面全体が開く速さ(終点は画面の対角より少し先。速すぎると波紋に見えない) */
+  animation: inv-intro-reveal 1.3s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
+}
+
+/* B案: フェード。スマホ・低スペック端末(JS が判定)と registerProperty 非対応時 */
+.inv-intro--fade .inv-intro__veil {
+  /* 標準イージングだと立ち上がりが速すぎて一瞬で消えるので、開く版と同じ緩めのカーブにする */
+  animation: inv-intro-fade 0.9s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
+}
+
+/* しずく: 左上だけ角を残した正方形を 45deg 回して涙型にする */
+.inv-intro__drop {
+  position: absolute;
+  left: var(--inv-x);
+  top: var(--inv-y);
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  background: #213c30;
+  border-radius: 0 50% 50% 50%;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: inv-intro-drop 0.55s cubic-bezier(0.55, 0, 0.9, 0.6) both;
+}
+
+/* 波紋 ×3(0.55 / 0.73 / 0.91s 開始)。
+   半分の大きさ(60vmax)で作り scale(2) まで広げる = レイヤーのメモリが 1/4。
+   will-change があるので拡大時に再ラスタされない(外すと節約にならない) */
+.inv-intro__ring {
+  position: absolute;
+  left: var(--inv-x);
+  top: var(--inv-y);
+  width: 60vmax;
+  height: 60vmax;
+  margin: -30vmax 0 0 -30vmax;
+  box-sizing: border-box;
+  border: 1px solid rgba(33, 60, 48, 0.45);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  will-change: transform, opacity;
+  animation: inv-intro-ring 1.3s var(--inv-ease) 0.55s both;
+}
+
+.inv-intro__ring--2 {
+  animation-delay: 0.73s;
+}
+
+.inv-intro__ring--3 {
+  animation-delay: 0.91s;
+}
+
+/* スキップ: 全体を 0.2s で消してから JS が remove */
+.inv-intro--skip {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+@keyframes inv-intro-failsafe {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes inv-intro-reveal {
+  from {
+    --inv-r: 0px;
+  }
+  to {
+    --inv-r: calc(75vmax + 60px);
+  }
+}
+
+@keyframes inv-intro-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes inv-intro-drop {
+  0% {
+    transform: translateY(-46vh) rotate(45deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes inv-intro-ring {
+  from {
+    transform: scale(0);
+    opacity: 0.65;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* 保険: JS 側でも挿入しないが、念のため reduced-motion / 印刷では出さない */
+@media (prefers-reduced-motion: reduce) {
+  .inv-intro {
+    display: none;
+  }
+}
+
+@media print {
+  .inv-intro {
+    display: none;
+  }
+}
+
+/* Windows のハイコントラストではしずくが背景色と同化し、単色の覆いだけになるので出さない */
+@media (forced-colors: active) {
+  .inv-intro {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   B-1. 筆の一画(ナビの下線)
+   「状態」(現在地・ホバー・フォーカスで線が出る)は常に有効。
+   「動き」(transition)だけを reduced-motion で止める。
+   線は border で描く(background だとハイコントラスト表示で消える)。
+   「お知らせ一覧」(.ref-text-link)は既存CSSがホバーで下線を出すので対象外。
+   ========================================================================== */
+
+.corporate-layout .corporate-primary-nav .corporate-nav-item,
+.corporate-layout .ref-footer-links .corporate-nav-item {
+  position: relative;
+}
+
+.corporate-layout .corporate-primary-nav .corporate-nav-item::after,
+.corporate-layout .ref-footer-links .corporate-nav-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* ナビ項目は高さ44pxの箱の中央に文字がある。箱の下端から8px内側 = 文字の行の約4px下 */
+  bottom: 8px;
+  height: 0;
+  border-top: 1px solid currentColor;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+/* 現在地は太さ2pxで常時表示(ホバー時の線と区別がつくように) */
+.corporate-layout .corporate-primary-nav .corporate-nav-item[aria-current="page"]::after,
+.corporate-layout .ref-footer-links .corporate-nav-item[aria-current="page"]::after {
+  border-top-width: 2px;
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.corporate-layout .corporate-primary-nav .corporate-nav-item:focus-visible::after,
+.corporate-layout .ref-footer-links .corporate-nav-item:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .corporate-layout .corporate-primary-nav .corporate-nav-item:hover::after,
+  .corporate-layout .ref-footer-links .corporate-nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+/* ==========================================================================
+   B-1(動き)/ B-2 / B-3. 動きのあるもの(reduced-motion では一切適用しない)
+   既存 CSS(.corporate-layout .xxx)より後勝ちに頼らないよう、詳細度を一段上げている。
+   hover はマウス等の精密ポインタ環境だけ。focus-visible は常に同じ演出が出る。
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---- B-1. 下線の動き: 左から引かれ、離すと右へ抜ける ---- */
+  .corporate-layout .corporate-primary-nav .corporate-nav-item::after,
+  .corporate-layout .ref-footer-links .corporate-nav-item::after {
+    transition: transform 0.5s var(--inv-ease);
+  }
+
+  /* ---- B-2. 一行送り: a[data-inv-label] がある時だけ効く(JS が動かなければ何も起きない) ----
+     ピルの輪郭は a::before(上下4px内側)で描かれており a 自体をクリップしても輪郭と合わない。
+     そこでクリップに頼らず、ラベルを少し上へ送りながら消し、同じ文言(a::after)を下から
+     重ねて出す。a 自体(GSAP 制御)には transform / opacity を指定しない。
+     content の代替テキスト構文( / "" )に非対応のブラウザでは、読み上げが二重になるので
+     演出ごと無効にする(@supports の外には何も書かない)。 */
+  @supports (content: "x" / "") {
+    .corporate-layout .corporate-action.ref-pill[data-inv-label] .corporate-action-label {
+      transition: transform 0.6s var(--inv-ease), opacity 0.4s var(--inv-ease);
+    }
+
+    .corporate-layout .corporate-action.ref-pill[data-inv-label]::after {
+      content: attr(data-inv-label) / "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      inset: 0;
+      box-sizing: border-box;
+      padding: inherit; /* a と同じ余白 = ラベルと同じ位置に文字が来る */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: transform 0.6s var(--inv-ease), opacity 0.5s var(--inv-ease) 0.08s;
+    }
+
+    .corporate-layout .corporate-action.ref-pill[data-inv-label]:focus-visible .corporate-action-label {
+      transform: translateY(-12px);
+      opacity: 0;
+    }
+
+    .corporate-layout .corporate-action.ref-pill[data-inv-label]:focus-visible::after {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .corporate-layout .corporate-action.ref-pill[data-inv-label]:hover .corporate-action-label {
+        transform: translateY(-12px);
+        opacity: 0;
+      }
+
+      .corporate-layout .corporate-action.ref-pill[data-inv-label]:hover::after {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  /* ---- B-3. 水輪(メニューボタン)。既存の outline / background transition はそのまま ---- */
+  .corporate-layout button.menu-toggle {
+    position: relative;
+  }
+
+  .corporate-layout button.menu-toggle::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    inset: -5px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: transform 0.5s var(--inv-ease), opacity 0.5s var(--inv-ease);
+  }
+
+  .corporate-layout button.menu-toggle > svg {
+    transition: transform 0.5s var(--inv-ease);
+  }
+
+  .corporate-layout button.menu-toggle:focus-visible::after {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  .corporate-layout button.menu-toggle:focus-visible > svg {
+    transform: scale(0.94);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .corporate-layout button.menu-toggle:hover::after {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+
+    .corporate-layout button.menu-toggle:hover > svg {
+      transform: scale(0.94);
+    }
+  }
+}
+
+/* ==========================================================================
+   D. フッターのフェードイン(1回だけ)。html.inv-anim は JS が付ける。
+      波形 svg と .ref-footer-disclosure には触らない。JS が動かなければ隠れない。
+      screen 限定: 印刷・PDF保存でフッターが消えないようにする。
+      focus-within: Tab でフッターに入った瞬間にリンクが見えない、を防ぐ。
+   ========================================================================== */
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html.inv-anim .corporate-layout .reference-footer:not([data-inv-seen]):not(:focus-within) .ref-footer-main {
+    opacity: 0;
+  }
+
+  html.inv-anim .corporate-layout .reference-footer .ref-footer-main {
+    transition: opacity 0.6s var(--inv-ease);
+  }
+
+  html.inv-anim .corporate-layout .reference-footer:focus-within .ref-footer-main {
+    transition: none;
+  }
+}
