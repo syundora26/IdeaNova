@@ -35,8 +35,8 @@
   /* 覆っている間は、見えていないリンクへの誤クリックを受け止める(着水・スキップで解放) */
   pointer-events: auto;
   contain: strict;
-  /* フェイルセーフ: JS が途中で死んでも 2.4s で覆いごと不可視にする */
-  animation: inv-intro-failsafe 0.01s linear 2.4s forwards;
+  /* フェイルセーフ: JS が途中で死んでも 3.8s で覆いごと不可視にする */
+  animation: inv-intro-failsafe 0.01s linear 3.8s forwards;
 }
 
 /* 着水後(JS が --open を付ける)とスキップ時は、下のページを操作できるようにする */
@@ -66,14 +66,14 @@
     rgba(233, 237, 226, 0) calc(var(--inv-r) - 60px),
     #e9ede2 var(--inv-r)
   );
-  /* 着水から約0.7sで画面全体が開く速さ(終点は画面の対角より少し先。速すぎると波紋に見えない) */
-  animation: inv-intro-reveal 1.3s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
+  /* 着水から約0.9sかけてゆっくり画面全体が開く(終点は画面の対角より少し先) */
+  animation: inv-intro-reveal 2s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
 }
 
 /* B案: フェード。スマホ・低スペック端末(JS が判定)と registerProperty 非対応時 */
 .inv-intro--fade .inv-intro__veil {
   /* 標準イージングだと立ち上がりが速すぎて一瞬で消えるので、開く版と同じ緩めのカーブにする */
-  animation: inv-intro-fade 0.9s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
+  animation: inv-intro-fade 1.3s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
 }
 
 /* しずく: 左上だけ角を残した正方形を 45deg 回して涙型にする */
@@ -81,9 +81,9 @@
   position: absolute;
   left: var(--inv-x);
   top: var(--inv-y);
-  width: 11px;
-  height: 11px;
-  margin: -5.5px 0 0 -5.5px;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
   background: #213c30;
   border-radius: 0 50% 50% 50%;
   opacity: 0;
@@ -91,8 +91,8 @@
   animation: inv-intro-drop 0.55s cubic-bezier(0.55, 0, 0.9, 0.6) both;
 }
 
-/* 波紋 ×3(0.55 / 0.73 / 0.91s 開始)。
-   半分の大きさ(60vmax)で作り scale(2) まで広げる = レイヤーのメモリが 1/4。
+/* 波紋 ×3(0.55 / 0.9 / 1.25s 開始)。ゆっくり大きく広がり、広がりきる手前まで見えている。
+   小さめ(60vmax)で作り scale(2.6) まで広げる = レイヤーのメモリを抑える。
    will-change があるので拡大時に再ラスタされない(外すと節約にならない) */
 .inv-intro__ring {
   position: absolute;
@@ -102,20 +102,20 @@
   height: 60vmax;
   margin: -30vmax 0 0 -30vmax;
   box-sizing: border-box;
-  border: 1px solid rgba(33, 60, 48, 0.45);
+  border: 1.5px solid rgba(33, 60, 48, 0.5);
   border-radius: 50%;
   opacity: 0;
   transform: scale(0);
   will-change: transform, opacity;
-  animation: inv-intro-ring 1.3s var(--inv-ease) 0.55s both;
+  animation: inv-intro-ring 2.4s cubic-bezier(0.33, 1, 0.68, 1) 0.55s both;
 }
 
 .inv-intro__ring--2 {
-  animation-delay: 0.73s;
+  animation-delay: 0.9s;
 }
 
 .inv-intro__ring--3 {
-  animation-delay: 0.91s;
+  animation-delay: 1.25s;
 }
 
 /* スキップ: 全体を 0.2s で消してから JS が remove */
@@ -165,13 +165,17 @@
   }
 }
 
+/* 大きく広がるまで見えているよう、前半は濃いまま保ち、後半でゆっくり消す */
 @keyframes inv-intro-ring {
-  from {
+  0% {
     transform: scale(0);
-    opacity: 0.65;
+    opacity: 0.7;
   }
-  to {
-    transform: scale(2);
+  55% {
+    opacity: 0.32;
+  }
+  100% {
+    transform: scale(2.6);
     opacity: 0;
   }
 }

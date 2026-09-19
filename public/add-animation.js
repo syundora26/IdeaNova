@@ -14,8 +14,8 @@
   var INTRO_KEY = 'ideanova:intro';
   var IMPACT_EVENT = 'ideanova:intro-impact';
   var IMPACT_MS = 550; // しずくの着水(CSS の落下時間と一致)
-  var END_MS = 2400; // 通常終了のタイムアウト(CSS 側フェイルセーフと同時刻)
-  var HARD_MS = 3000; // CSS 未ロードでも必ず消す
+  var END_MS = 3800; // 通常終了のタイムアウト(CSS 側フェイルセーフと同時刻)
+  var HARD_MS = 4600; // CSS 未ロードでも必ず消す
   var SKIP_MS = 200; // スキップ時のフェード(CSS の .inv-intro--skip と一致)
   var SKIP_EVENTS = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
   var PASSIVE = { passive: true };
