@@ -25,10 +25,10 @@ function meteor(): void {
     streak.classList.remove('is-on');
     void streak.offsetWidth; // restart the one-shot animation
     streak.classList.add('is-on');
-    schedule(14); // next one in 14-24s
+    schedule(9); // next one in 9-19s
   }
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) window.clearTimeout(timer); else schedule(14);
+    if (document.hidden) window.clearTimeout(timer); else schedule(9);
   });
   // never within the first 5s after load
   if (document.readyState === 'complete') schedule(5);

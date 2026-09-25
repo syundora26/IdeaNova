@@ -10,3 +10,4 @@ reference/
 .env.local
 .env.*.local
 qa/separation/*.pid
+sd-cosmic-bright/source/scripts/planet-debug.npy

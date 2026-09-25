@@ -1,4 +1,5 @@
 import { gsap, ScrollTrigger } from '../scroll/smooth';
+import { PLANET, RING, coverMap } from './geometry';
 
 /**
  * Hero planet: twinkling stars around it and light particles travelling along its ring.
@@ -6,14 +7,13 @@ import { gsap, ScrollTrigger } from '../scroll/smooth';
  * and mapped to the art box with the same maths as `object-fit: cover` + `object-position`, which keeps
  * them glued to the picture at every viewport. Nothing here touches the LCP image itself.
  */
-const IMG = { w: 1672, h: 941 };
-/** planet disc (image px): far-side ring particles disappear behind it */
-const PLANET = { cx: 1232, cy: 432, r: 345 };
-/** outer edge of the ring, least-squares ellipse fitted to the picture (image px, tilt in radians) */
-const RING = { cx: 1435, cy: 366, a: 758, b: 100, tilt: -20.35 * Math.PI / 180 };
-/** ring particles: start phase (0-1) around the ellipse; one revolution = RING_PERIOD seconds */
-const DOTS = [0, 0.25, 0.5, 0.75];
-const RING_PERIOD = 44;
+/** ring particles: 4 bright clumps on the outer edge plus a swarm of small specks across the band (inner ones a bit faster) */
+type Dot = { phase: number; s: number; period: number; size: number; alpha: number };
+const DOTS: Dot[] = [0, 0.25, 0.5, 0.75].map((phase) => ({ phase, s: 1, period: 44, size: 0, alpha: 1 }));
+for (let i = 0; i < 36; i++) {
+  const s = 0.905 + ((i * 0.37) % 1) * 0.095;
+  DOTS.push({ phase: (i * 0.618) % 1, s, period: 38 + (s - 0.905) / 0.095 * 10, size: 2 + (i % 3), alpha: 0.45 + ((i * 0.53) % 1) * 0.45 });
+}
 /** star positions on the dark sky of the picture (image px), clear of the planet and the ring */
 const STARS: [number, number][] = [
   [120, 90], [260, 170], [420, 60], [560, 150], [700, 40], [870, 110], [1020, 50], [1130, 20], [1330, 30], [1440, 60], [1610, 120],
@@ -38,7 +38,11 @@ export function setupHero(): void {
   });
   const ring = document.createElement('div');
   ring.className = 'hero__ring';
-  const dotEls = DOTS.map(() => ring.appendChild(document.createElement('b')));
+  const dotEls = DOTS.map((d) => {
+    const b = ring.appendChild(document.createElement('b'));
+    if (d.size) { b.className = 'speck'; b.style.setProperty('--sz', `${d.size}px`); }
+    return b;
+  });
   art.append(stars, ring);
 
   /* image px -> art px (object-fit: cover, object-position from the computed style) */
@@ -48,10 +52,7 @@ export function setupHero(): void {
   const measure = () => {
     const W = art.clientWidth;
     const H = art.clientHeight;
-    scale = Math.max(W / IMG.w, H / IMG.h);
-    const [px = 0.5, py = 0.5] = getComputedStyle(img).objectPosition.split(' ').map((v) => parseFloat(v) / 100);
-    ox = (W - IMG.w * scale) * px;
-    oy = (H - IMG.h * scale) * py;
+    ({ scale, ox, oy } = coverMap(art, img));
     // stars: skip the ones outside the box or under the text block / scroll hint
     const frame = art.getBoundingClientRect();
     const avoid = ['.hero__inner', '.scroll-hint']
@@ -73,18 +74,20 @@ export function setupHero(): void {
   /* ring particles: constant angular speed; dimmer on the far side, hidden while behind the planet */
   const cos = Math.cos(RING.tilt);
   const sin = Math.sin(RING.tilt);
-  const state = { t: 0 };
+  let elapsed = 0; // seconds while the hero is on screen
   function render(): void {
     dotEls.forEach((dot, i) => {
-      const f = (state.t + DOTS[i]) * Math.PI * 2;
-      const lu = RING.a * Math.cos(f);
-      const lv = RING.b * Math.sin(f);
+      const d = DOTS[i];
+      const f = (elapsed / d.period + d.phase) * Math.PI * 2;
+      const lu = RING.a * d.s * Math.cos(f);
+      const lv = RING.b * d.s * Math.sin(f);
       const x = RING.cx + lu * cos - lv * sin;
       const y = RING.cy + lu * sin + lv * cos;
       const far = lv < 0;
       const behind = far && Math.hypot(x - PLANET.cx, y - PLANET.cy) < PLANET.r;
       dot.style.transform = `translate(${(ox + x * scale).toFixed(1)}px, ${(oy + y * scale).toFixed(1)}px)`;
-      dot.style.opacity = behind ? '0' : far ? '0.5' : '1';
+      const op = behind ? '0' : (far ? d.alpha * 0.5 : d.alpha).toFixed(2);
+      if (dot.style.opacity !== op) dot.style.opacity = op;
     });
   }
 
@@ -92,9 +95,21 @@ export function setupHero(): void {
   new ResizeObserver(measure).observe(art);
   document.fonts.ready.then(measure);
 
-  const tween = gsap.to(state, { t: 1, duration: RING_PERIOD, ease: 'none', repeat: -1, paused: true, onUpdate: render });
+  let last = 0;
+  let acc = 0;
+  // 30 fps is plenty for a 40-second orbit and halves the per-frame style work of the 40 particles
+  const tick = (time: number) => {
+    if (last) { const dt = time - last; elapsed += dt; acc += dt; }
+    last = time;
+    if (acc < 1 / 30) return;
+    acc = 0;
+    render();
+  };
+  let running = false;
   const toggle = (active: boolean) => {
-    if (active) tween.play(); else tween.pause();
+    if (active && !running) { last = 0; gsap.ticker.add(tick); }
+    if (!active && running) gsap.ticker.remove(tick);
+    running = active;
     art.classList.toggle('is-active', active); // the star twinkle keyframes follow (animation-play-state)
   };
   const inRange = (self: ScrollTrigger) => self.end > 0 && self.scroll() >= self.start && self.scroll() <= self.end;
