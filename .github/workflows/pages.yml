@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - claude/cosmic-animation-hp-design-nq2g4w
   workflow_dispatch:
 permissions:
   contents: read
@@ -25,6 +26,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build:share
+      - name: Add the SD cosmic site under /sd/
+        run: |
+          mkdir -p dist/share/sd
+          cp -r sd-cosmic-bright/index.html sd-cosmic-bright/assets sd-cosmic-bright/images sd-cosmic-bright/favicon.svg sd-cosmic-bright/og.png sd-cosmic-bright/robots.txt dist/share/sd/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
