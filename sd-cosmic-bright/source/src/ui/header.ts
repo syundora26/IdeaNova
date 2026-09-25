@@ -73,7 +73,8 @@ export function setupHeader(smooth: Smooth): HeaderController {
   };
   const openMenu = () => {
     menu.hidden = false;
-    requestAnimationFrame(() => menu.classList.add('is-open'));
+    void menu.offsetWidth; // flush the `hidden` change so the .is-open fade actually transitions
+    menu.classList.add('is-open');
     menuBtn.setAttribute('aria-expanded', 'true');
     menuBtn.setAttribute('aria-label', 'メニューを閉じる');
     main.setAttribute('inert', '');

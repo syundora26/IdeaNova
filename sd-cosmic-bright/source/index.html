@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#102149" />
+    <script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')}catch(e){}</script>
     <title>株式会社SD｜構造が、動き出す。Web制作スタジオ</title>
     <meta
       name="description"
@@ -85,21 +86,21 @@
         <div class="hero__art" aria-hidden="true"><img src="./images/cosmic-hero.webp" alt="" width="1672" height="941" fetchpriority="high" /></div>
         <div class="container hero">
           <div class="hero__inner" id="hero-inner">
-            <p class="label hero__label" data-reveal="block">SD — WEB PRODUCTION STUDIO</p>
+            <p class="label hero__label" data-reveal="block" data-delay="0">SD — WEB PRODUCTION STUDIO</p>
             <h1 class="hero__title" id="hero-title">
               <span class="line"><span>構造が、</span></span>
               <span class="line"><span>動き出す。</span></span>
             </h1>
-            <p class="hero__en" data-reveal="block">Structure in motion.</p>
-            <p class="hero__lead" data-reveal="block">
+            <p class="hero__en" data-reveal="block" data-delay="80">Structure in motion.</p>
+            <p class="hero__lead" data-reveal="block" data-delay="160">
               株式会社SDは、Webサイトの構造・動き・コードをひとつのデザインとして扱う、小さな制作スタジオです。
             </p>
-            <div class="hero__cta" data-reveal="block">
+            <div class="hero__cta" data-reveal="block" data-delay="240">
               <a class="btn btn--signal" href="#contact">相談する</a>
               <a class="link-arrow" href="#works">実績を見る</a>
             </div>
           </div>
-          <a class="scroll-hint" id="scroll-hint" href="#about" aria-label="スクロールして続きを見る">
+          <a class="scroll-hint" id="scroll-hint" href="#about" data-reveal="fade" data-delay="600" aria-label="スクロールして続きを見る">
             <span class="scroll-hint__label">SCROLL</span>
             <span class="scroll-hint__line"></span>
           </a>
@@ -117,7 +118,7 @@
               <span class="line"><span>同じ手で。</span></span>
             </h2>
             <hr class="rule" data-reveal="rule" />
-            <div class="brand-orbit" aria-hidden="true"><i></i><i></i><i></i><span>SD</span><b></b></div>
+            <div class="brand-orbit" aria-hidden="true" data-reveal="fade"><i></i><i></i><i></i><span>SD</span><b></b></div>
           </div>
           <div class="about__body col-5">
             <p data-reveal="block">
@@ -326,7 +327,7 @@
       <!-- 07 CONTACT -->
       <section class="section section--contact scrim-c" id="contact" data-section="contact">
         <span class="section-num" aria-hidden="true">06</span>
-        <div class="contact-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="contact-orbits" aria-hidden="true" data-reveal="fade"><i></i><i></i><i></i></div>
         <div class="container contact">
           <p class="label" data-reveal="block">06 — CONTACT</p>
           <h2 class="h2 h2--center" data-reveal="lines">

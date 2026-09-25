@@ -1,0 +1,49 @@
+/* motion.css — reveal system (L0), section motions, orbit dots, background depth and Whimsy micro-interactions.
+   Every "hidden until revealed / moving" initial state lives under html.motion, which the <head> gate only adds
+   when motion is allowed, so reduced-motion (and print / no-JS) keeps the current static page. */
+:root{--t-ui:.3s;--t-reveal:.9s;--t-draw:1.2s;--ease-out:cubic-bezier(.16,1,.3,1);--ease-inout:cubic-bezier(.45,0,.55,1);--mv:1}
+/* L0 reveal base: hidden before .is-visible; no-JS failsafe shows everything after 4s */
+html.motion :is([data-reveal],.card,.step):not(.is-visible){opacity:0}html.motion:not(.motion-ready) :is([data-reveal],.card,.step):not(.is-visible){animation:failsafe 0s 4s forwards}
+[data-reveal=fade].is-visible{animation-name:fade}html.motion .hero__inner .is-visible{--rise:12px;animation-duration:.8s}
+:is([data-reveal=lines],[data-reveal=keywords],[data-reveal=row]).is-visible{animation:none}
+/* A2 heading lines / rule / keywords */
+html.motion [data-reveal=lines] .line{overflow:hidden}html.motion [data-reveal=lines] .line>span{display:inline-block}[data-reveal=lines].is-visible .line>span{animation:rise-line var(--t-reveal) var(--ease-out) var(--delay,0ms) both}[data-reveal=lines].is-visible .line:nth-child(2)>span{animation-delay:calc(var(--delay,0ms) + 90ms)}
+[data-reveal=rule].is-visible{transform-origin:left;animation:draw-rule var(--t-draw) var(--ease-out) calc(var(--delay,0ms) + .25s) both}
+[data-reveal=keywords].is-visible li{animation:appear var(--t-reveal) var(--ease-out) calc(var(--delay,0ms) + var(--i,0)*70ms) both}
+:is(.keywords,.menu__list)>:nth-child(2){--i:1}:is(.keywords,.menu__list)>:nth-child(3){--i:2}:is(.keywords,.menu__list)>:nth-child(4){--i:3}:is(.keywords,.menu__list)>:nth-child(5){--i:4}:is(.keywords,.menu__list)>:nth-child(6){--i:5}
+/* C1 company rows: opacity only, cell by cell */
+[data-reveal=row].is-visible :is(th,td){animation:fade .7s var(--ease-out) var(--delay,0ms) both}[data-reveal=row].is-visible td{animation-delay:calc(var(--delay,0ms) + 55ms)}
+/* P1 / P2 constellation: node lights, line extends, in --seq order */
+.step{--rot:-14deg;--seq-gap:.34s}.step:nth-child(even){--rot:14deg}html.motion .step.is-visible:after{animation:draw-line .5s var(--ease-out) calc(var(--seq,0)*var(--seq-gap)) both}html.motion .step.is-visible .step__index:after{animation:node .5s var(--ease-out) calc(var(--seq,0)*var(--seq-gap)) both}
+/* S1 card orbit settles, ◇ lights */
+.card{--tilt:-30deg}.card:nth-child(2){--tilt:30deg}.card:nth-child(3){--tilt:-15deg}.card:nth-child(4){--tilt:40deg}html.motion .card.is-visible .card__index:after{animation:settle var(--t-draw) var(--ease-out) calc(var(--delay,0ms) + .1s) both}html.motion .card.is-visible:after{animation:fade .4s var(--ease-out) calc(var(--delay,0ms) + .6s) both}
+/* W1 line drawings: dots first, then strokes (--len measured in TS) */
+html.motion .work.is-visible svg :is(path,ellipse){stroke-dasharray:var(--len);animation:draw-path var(--t-draw) var(--ease-out) calc(var(--delay,0ms) + .3s) both}html.motion .work.is-visible svg :is(rect,circle){animation:fade .4s var(--ease-out) calc(var(--delay,0ms) + .1s) both}
+/* U1 background depth: taller layers so the scroll-driven drift never shows a gap */
+html.motion .universe{overflow:hidden}html.motion .universe>img{height:124%}html.motion .universe .twinkles{height:160%}
+/* A1 / K1 orbit dots (children of the first orbit, positioned by JS); loops only run while on screen */
+html.motion .brand-orbit b{top:50%;left:50%;right:auto;margin:-3.5px 0 0 -3.5px}html.motion .contact-orbits b{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;background:#cbdcff;border-radius:50%;box-shadow:0 0 18px #83adff}html.motion .contact-orbits i:first-child:after{display:none}
+html.motion .brand-orbit i:first-child{animation-play-state:paused}html.motion .brand-orbit.is-active i:first-child{animation-play-state:running}
+/* B3 meteor */
+.meteor{position:absolute;z-index:1;width:90px;height:1px;background:linear-gradient(90deg,#d6ecff,transparent);opacity:0;transform:rotate(-30deg);pointer-events:none}.meteor.is-on{animation:meteor 1.1s var(--ease-inout) forwards}
+/* Whimsy 1 comet arrow: --on (hover inside (hover:hover) / focus-visible) drives head, tail and lift; --mv zeroes movement */
+.btn{box-shadow:0 0 35px rgba(159,187,255,calc(var(--on,0)*.2))}.btn--signal{box-shadow:0 0 30px #7795ff22,0 0 35px rgba(159,187,255,calc(var(--on,0)*.2))}
+.btn:before,.link-arrow:before{content:'';position:absolute;top:calc(50% - .5px);right:calc(var(--bx,0px) + 4px);width:14px;height:1px;background:linear-gradient(90deg,transparent,currentColor);transform-origin:100% 50%;opacity:calc(var(--on,0)*.75);scale:calc(1 - (1 - var(--on,0))*var(--mv,1)*.7) 1;translate:calc(var(--on,0)*var(--mv,1)*4px) 0;transition:opacity .5s,scale .5s var(--ease-out),translate .5s var(--ease-out);pointer-events:none}.link-arrow:before{right:4px}
+.btn:active{translate:0 calc(var(--mv,1)*-1px);scale:calc(1 - var(--mv,1)*.02);box-shadow:0 0 12px #9fe9ff66;transition-duration:.12s}.link-arrow:active{opacity:.75}
+/* Whimsy 2 star chart opens: overlay fades, items light top-down, foot last */
+.menu{opacity:0;transition:opacity .3s var(--ease-out)}.menu.is-open{opacity:1;transition-duration:.4s}.menu__list li{opacity:0;translate:0 calc(var(--mv,1)*8px);transition:opacity .2s,translate .2s var(--ease-out)}.menu.is-open li{opacity:1;translate:none;transition-duration:.35s;transition-delay:calc(60ms + var(--i,0)*55ms)}.menu__foot{opacity:0;transition:opacity .2s}.menu.is-open .menu__foot{opacity:1;transition:opacity .35s .4s}
+.menu-btn:focus-visible .menu-btn__bar{background:var(--cyan)}
+/* Whimsy 3 observation points: indicator press converges */
+.indicator button:active:after{transform:rotate(45deg) scale(.8);transition-duration:.12s}
+/* Whimsy 4 orbits turn while touched: return transitions (hover rules below, hover-only) */
+.card__index:after,.step__index:before{transition:rotate .5s var(--ease-out),border-color var(--t-ui)}.card:after{transition:background var(--t-ui),box-shadow var(--t-ui)}
+/* Whimsy 5 ring response + unified lighting */
+.header>.wordmark:after{rotate:calc(var(--on,0)*var(--mv,1)*6deg);transition:rotate .5s var(--ease-out),border-color .5s,box-shadow .5s}.header>.wordmark:is(:hover,:focus-visible):after{border-color:#9adfffcc;box-shadow:0 0 14px #9fe9ff40,inset 0 0 10px #9fe9ff14}
+.footer__top{translate:0 calc(var(--on,0)*var(--mv,1)*-3px);transition:translate var(--t-ui) var(--ease-out),color var(--t-ui)}.footer__mail,.menu__list a,.scroll-hint__label{transition:color var(--t-ui)}:is(.footer__top,.footer__mail):is(:hover,:focus-visible),.menu__list a:is(:hover,:focus-visible) .menu__jp,.scroll-hint:is(:hover,:focus-visible) .scroll-hint__label{color:var(--cyan)}
+/* hover-only states (never sticky on touch); focus-visible mirrors the interactive ones outside the query */
+@media(hover:hover){.btn:hover,.link-arrow:hover,.nav__list a:hover,.header>.wordmark:hover,.footer__top:hover{--on:1}.menu-btn:hover .menu-btn__bar{background:var(--cyan)}.indicator button:hover:after{border-color:var(--cyan);box-shadow:0 0 8px #7dd5ff80}.card:hover .card__index:after,.step:hover .step__index:before{rotate:calc(var(--mv,1)*24deg);transition-duration:.9s,var(--t-ui)}.card:hover .card__index:after{border-color:#9adfffb3}.step:hover .step__index:before{border-color:#9adfff80}.card:hover:after{background:var(--cyan);box-shadow:0 0 10px #9fe9ff}.work:hover svg{transform:scale(calc(1 + var(--mv,1)*.06)) rotate(calc(var(--mv,1)*-2deg));transition-duration:.9s}}
+:is(.btn,.link-arrow,.nav__list a,.header>.wordmark,.footer__top):focus-visible{--on:1}
+@keyframes failsafe{to{opacity:1}}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes rise-line{from{opacity:0;transform:translateY(.4em)}to{opacity:1;transform:none}}@keyframes draw-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes draw-line{from{transform:rotate(var(--rot)) scaleX(0)}to{transform:rotate(var(--rot)) scaleX(1)}}@keyframes draw-vline{from{transform:scaleY(0)}to{transform:scaleY(1)}}@keyframes node{from{opacity:.25}to{opacity:1}}@keyframes settle{from{opacity:0;transform:rotate(calc(var(--tilt) - 40deg)) scale(.85)}to{opacity:1;transform:rotate(var(--tilt))}}@keyframes draw-path{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}@keyframes meteor{0%{opacity:0;transform:rotate(-30deg) translateX(0)}50%{opacity:.7}100%{opacity:0;transform:rotate(-30deg) translateX(-220px)}}
+@media(max-width:1023px){.step{--rot:-21deg}.step:nth-child(even){--rot:21deg}}
+@media(max-width:767px){.step,.step:nth-child(even){--rot:0deg;--seq-gap:0s}html.motion .step.is-visible:after{animation-name:draw-vline;transform-origin:top}html.motion .step.is-visible .step__index:after{animation-duration:.4s}html.motion .brand-orbit b{margin:-2.5px 0 0 -2.5px}}
+@media(prefers-reduced-motion:reduce){:root{--mv:0}}
