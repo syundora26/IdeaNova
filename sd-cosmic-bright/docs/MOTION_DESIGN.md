@@ -13,6 +13,7 @@
 | 3 | Frontend Developer | [03-frontend-brief.md](motion/03-frontend-brief.md) → 実装レポート [03-frontend-report.md](motion/03-frontend-report.md) |
 | 4 | Accessibility Auditor / Performance Benchmarker | [04-a11y-report.md](motion/04-a11y-report.md) ／ [04-perf-report.md](motion/04-perf-report.md)（いずれも条件付き合格） |
 | 5 | オーケストレーター | [05-post-audit-fixes.md](motion/05-post-audit-fixes.md) — 監査指摘の反映と再計測。H3（焦点合わせ）は性能上の理由で削除 |
+| 6 | 追加要望 | [06-hero-additions.md](motion/06-hero-additions.md) — 惑星の周りの星のきらめき（H6）と輪を周回する光の粒（H7） |
 
 ## コンセプト
 
@@ -30,6 +31,8 @@
 | U1 | 背景（`.universe`） | **星空画像と星の層がスクロール進捗に比例して上へ移動**（画像 24vh 相当・星の層 60vh 相当。遠い層ほど遅い深度パララックス）。層は `html.motion` 時のみ縦に拡大して隙間を出さない | スクロール | なし（現行の固定背景のまま） |
 | L0 | 全体 | 出現システムの基盤。`<head>` の 1 行で `html.motion` を先付けし、初期非表示は motion 配下のみ → 現状の「読み込み時に一瞬瞬く」問題も解消 | 初回描画 | 最初から全表示 |
 | H1 | hero | ラベル → 英文 → リード → CTA → SCROLL が 0/80/160/240ms で静かに点灯（**h1 と惑星画像は動かさない = LCP を守る**） | 読み込み直後 | 全表示 |
+| H6 | hero | 惑星画像の夜空 30 か所で星が瞬く（文字と重なる位置は自動で非表示） | 常時（ヒーロー可視時） | なし |
+| H7 | hero | 輪の外縁に沿って 4 つの光の粒が 44 秒で周回。奥側は減光、惑星の裏では非表示 | 常時（ヒーロー可視時） | なし |
 | H2 | hero | 惑星画像のスクロール深度パララックス（+14%、mobile +10%、scrub） | スクロール | なし |
 | A1 / K1 | about / contact | 軌道上の光点が一定速度で周回（22s / 36s、可視時のみ再生） | 常時（可視時） | 既存の静止光点のまま |
 | P1 / P2 | process | 星座の結線: 節点が灯り → 線が伸びる → 次の節点… 合計 2s。mobile は縦線で遅延ゼロ | 出現時 | 完成状態で表示 |

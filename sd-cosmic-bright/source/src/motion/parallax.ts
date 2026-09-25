@@ -18,11 +18,12 @@ export function setupParallax(): void {
       });
     }
   }
-  // H2: the planet lags behind the content while the hero scrolls out (14% desktop / 10% mobile)
+  // H2: the planet lags behind the content while the hero scrolls out (14% desktop / 10% mobile).
+  // The art's other children (hero star / ring layers, same size as the image) ride along so they stay on the picture.
   const hero = document.getElementById('hero');
-  const planet = hero?.querySelector<HTMLImageElement>('.hero__art img');
-  if (hero && planet) {
-    gsap.to(planet, { yPercent: () => (narrow() ? 10 : 14), ease: 'none', scrollTrigger: scrub({ trigger: hero, start: 'top top', end: 'bottom top' }) });
+  const art = hero?.querySelector<HTMLElement>('.hero__art');
+  if (hero && art && art.children.length) {
+    gsap.to(Array.from(art.children), { yPercent: () => (narrow() ? 10 : 14), ease: 'none', scrollTrigger: scrub({ trigger: hero, start: 'top top', end: 'bottom top' }) });
   }
   // B2: outline section numbers travel +40px -> -40px (mobile +/-20px) while their section passes
   for (const num of document.querySelectorAll<HTMLElement>('.section-num')) {

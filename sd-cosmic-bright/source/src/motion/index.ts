@@ -2,6 +2,7 @@ import { ScrollTrigger } from '../scroll/smooth';
 import { setupParallax } from './parallax';
 import { setupOrbits } from './orbit';
 import { setupDecor } from './decor';
+import { setupHero } from './hero';
 
 /**
  * Motion entry point. Everything here is skipped unless the inline <head> gate added `html.motion`
@@ -9,6 +10,7 @@ import { setupDecor } from './decor';
  */
 export function setupMotion(): void {
   if (!document.documentElement.classList.contains('motion')) return;
+  setupHero(); // adds the hero star / ring layers before the parallax picks up the art's children
   setupParallax();
   setupOrbits();
   setupDecor();
