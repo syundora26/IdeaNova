@@ -1,0 +1,5 @@
+baseline/mobile | perf 74 | a11y 100 | LCP 4.2 s | CLS 0 | TBT 290 ms | FCP 2.4 s | LCP elem: 
+baseline/desktop | perf 100 | a11y 100 | LCP 0.8 s | CLS 0 | TBT 0 ms | FCP 0.5 s | LCP elem: 
+LCP element (mobile & desktop): main#main > section#hero > div.hero__art > img  (cosmic-hero.webp, fetchpriority=high)
+mobile LCP breakdown: TTFB 19ms / load delay 33ms / load 108ms / element render delay 2069ms (render-blocking CSS + Google Fonts)
+baseline bundle: index.js 24.59kB (gz 7.49) / gsap.js 112.83kB (gz 44.35) / index.css 25.15kB (gz 6.77)
