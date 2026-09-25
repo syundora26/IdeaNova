@@ -1,4 +1,4 @@
-# 宇宙モーション追加 — 設計案（実装前レビュー用）
+# 宇宙モーション追加 — 設計（承認済み・追加要望反映）
 
 対象: 株式会社SD コーポレートサイト（宇宙デザイン・明るさ調整版）`sd-cosmic-bright/`
 ブランドトーン: 信頼感のあるコーポレート。やりすぎない。
@@ -9,7 +9,8 @@
 | 1a | オーケストレーター | [01a-tech-review.md](motion/01a-tech-review.md) — 実装時の技術注意点（点滅回避・LCP・競合） |
 | 2 | Whimsy Injector | [02-whimsy-injector.md](motion/02-whimsy-injector.md) — ボタン・アイコンのマイクロインタラクション 5 案 |
 | — | 共通 | [00-brief.md](motion/00-brief.md) ブリーフ ／ [perf-baseline.txt](motion/perf-baseline.txt) 変更前の Lighthouse |
-| 3 | Frontend Developer | （承認後）GSAP + ScrollTrigger + CSS で実装 |
+| 2b | ユーザー要望 | **U1 背景の宇宙をスクロールに合わせて動かす**（Must に追加。詳細は [03-frontend-brief.md](motion/03-frontend-brief.md)） |
+| 3 | Frontend Developer | [03-frontend-brief.md](motion/03-frontend-brief.md) に従い GSAP + ScrollTrigger + CSS で実装 |
 | 4 | Accessibility Auditor / Performance Benchmarker | （実装後・並行）reduced-motion、CLS / LCP の検証 |
 
 ## コンセプト
@@ -25,6 +26,7 @@
 
 | ID | 場所 | 動き | トリガー | reduced-motion |
 |---|---|---|---|---|
+| U1 | 背景（`.universe`） | **星空画像と星の層がスクロール進捗に比例して上へ移動**（画像 24vh 相当・星の層 60vh 相当。遠い層ほど遅い深度パララックス）。層は `html.motion` 時のみ縦に拡大して隙間を出さない | スクロール | なし（現行の固定背景のまま） |
 | L0 | 全体 | 出現システムの基盤。`<head>` の 1 行で `html.motion` を先付けし、初期非表示は motion 配下のみ → 現状の「読み込み時に一瞬瞬く」問題も解消 | 初回描画 | 最初から全表示 |
 | H1 | hero | ラベル → 英文 → リード → CTA → SCROLL が 0/80/160/240ms で静かに点灯（**h1 と惑星画像は動かさない = LCP を守る**） | 読み込み直後 | 全表示 |
 | H2 | hero | 惑星画像のスクロール深度パララックス（+14%、mobile +10%、scrub） | スクロール | なし |
