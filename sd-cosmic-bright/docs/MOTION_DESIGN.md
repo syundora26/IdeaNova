@@ -1,4 +1,4 @@
-# 宇宙モーション追加 — 設計（承認済み・追加要望反映）
+# 宇宙モーション追加 — 設計・実装・監査の記録（完了）
 
 対象: 株式会社SD コーポレートサイト（宇宙デザイン・明るさ調整版）`sd-cosmic-bright/`
 ブランドトーン: 信頼感のあるコーポレート。やりすぎない。
@@ -10,8 +10,9 @@
 | 2 | Whimsy Injector | [02-whimsy-injector.md](motion/02-whimsy-injector.md) — ボタン・アイコンのマイクロインタラクション 5 案 |
 | — | 共通 | [00-brief.md](motion/00-brief.md) ブリーフ ／ [perf-baseline.txt](motion/perf-baseline.txt) 変更前の Lighthouse |
 | 2b | ユーザー要望 | **U1 背景の宇宙をスクロールに合わせて動かす**（Must に追加。詳細は [03-frontend-brief.md](motion/03-frontend-brief.md)） |
-| 3 | Frontend Developer | [03-frontend-brief.md](motion/03-frontend-brief.md) に従い GSAP + ScrollTrigger + CSS で実装 |
-| 4 | Accessibility Auditor / Performance Benchmarker | （実装後・並行）reduced-motion、CLS / LCP の検証 |
+| 3 | Frontend Developer | [03-frontend-brief.md](motion/03-frontend-brief.md) → 実装レポート [03-frontend-report.md](motion/03-frontend-report.md) |
+| 4 | Accessibility Auditor / Performance Benchmarker | [04-a11y-report.md](motion/04-a11y-report.md) ／ [04-perf-report.md](motion/04-perf-report.md)（いずれも条件付き合格） |
+| 5 | オーケストレーター | [05-post-audit-fixes.md](motion/05-post-audit-fixes.md) — 監査指摘の反映と再計測。H3（焦点合わせ）は性能上の理由で削除 |
 
 ## コンセプト
 
@@ -42,7 +43,7 @@
 | S1 | service | 数字を囲む楕円が「軌道として定着」（−40° → 所定角度）、◇が点灯 |
 | W1 | works | 線画 SVG の点が灯り、線が stroke で描かれる |
 | C1 | company | 行が透明度のみで順に点灯（**位置移動ゼロ。最も静かなセクション**） |
-| H3 | hero | 惑星の焦点が合う scale 1.03 → 1（2.4s、1 回） |
+| ~~H3~~ | hero | ~~惑星の焦点が合う scale 1.03 → 1~~ → 監査後に削除（05 参照） |
 | B3 | 背景 | 流れ星: 細い光の筋が 14〜24s 間隔で 1 本、上部帯域のみ、読み込み後 5s は発生させない（**迷ったら落とす候補 #1**） |
 
 ### Could — 枠が残った場合のみ（既定では実装しない）

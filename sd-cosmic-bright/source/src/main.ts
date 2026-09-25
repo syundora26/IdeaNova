@@ -48,11 +48,21 @@ if (!reduced && 'IntersectionObserver' in window) {
     el.style.setProperty('--delay', `${delay}ms`);
     observer.observe(el);
   });
+  // keyboard users can Tab into a section before it scrolls into view: reveal it at once, without the stagger
+  document.addEventListener('focusin', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLElement>('[data-reveal], .card, .step');
+    if (!el || el.classList.contains('is-visible')) return;
+    el.style.setProperty('--delay', '0ms');
+    el.style.animationDuration = '.3s';
+    el.classList.add('is-visible');
+    observer.unobserve(el);
+  });
 }
 const twinkles = document.querySelector('.twinkles');
 if (twinkles) {
-  // the twinkle layer is 160% tall when it parallaxes (U1), so keep the same density
-  for (let i = 0; i < (motion ? 44 : 28); i++) {
+  // the twinkle layer is 160% tall when it parallaxes (U1): keep the density on desktop, stay at 28 on phones (CPU)
+  const stars = motion && !matchMedia('(max-width: 767px)').matches ? 44 : 28;
+  for (let i = 0; i < stars; i++) {
     const star = document.createElement('i');
     star.style.cssText = `left:${(i * 37.7 + 9) % 100}%;top:${(i * 23.1 + 12) % 100}%;--twinkle-delay:${-(i % 7)}s;--twinkle-duration:${3 + (i % 5)}s`;
     twinkles.appendChild(star);
@@ -68,7 +78,9 @@ if (hero && !reduced && matchMedia('(pointer:fine)').matches) {
   });
   heroSection.addEventListener('pointerleave', () => { hero.style.translate = '0px 0px'; });
 }
-setupMotion();
+// parallax / orbits / decor are not needed for first paint: run them in a separate task so the startup task stays short
+if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(setupMotion, { timeout: 800 });
+else window.setTimeout(setupMotion, 50);
 window.addEventListener('load', () => {
   if (location.hash && location.hash !== '#top' && document.getElementById(location.hash.slice(1))) {
     smooth.scrollTo(location.hash, { immediate: true });

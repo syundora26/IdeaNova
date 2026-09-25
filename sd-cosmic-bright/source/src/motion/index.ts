@@ -12,8 +12,6 @@ export function setupMotion(): void {
   setupParallax();
   setupOrbits();
   setupDecor();
-  // positions shift once web fonts / images are in; re-measure the scrub ranges
-  const refresh = () => ScrollTrigger.refresh();
-  document.fonts.ready.then(refresh);
-  window.addEventListener('load', refresh, { once: true });
+  // ScrollTrigger refreshes itself on window load; web fonts can land later and move things, so re-measure once more then
+  document.fonts.ready.then(() => ScrollTrigger.refresh());
 }

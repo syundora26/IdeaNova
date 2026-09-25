@@ -28,8 +28,10 @@ function orbit(host: HTMLElement, dot: HTMLElement, duration: number, phase: num
     if (active) tween.play(); else tween.pause();
     host.classList.toggle('is-active', active); // CSS loops (orbit-breathe) follow the same visibility
   };
-  const trigger = ScrollTrigger.create({ trigger: section, start: 'top bottom', end: 'bottom top', onToggle: (self) => toggle(self.isActive) });
-  toggle(trigger.isActive);
+  // isActive is not reliable at creation or inside onRefresh; derive the state from the refreshed geometry instead
+  const inRange = (self: ScrollTrigger) => self.end > 0 && self.scroll() >= self.start && self.scroll() <= self.end;
+  const trigger = ScrollTrigger.create({ trigger: section, start: 'top bottom', end: 'bottom top', onToggle: (self) => toggle(self.isActive), onRefresh: (self) => toggle(inRange(self)) });
+  toggle(inRange(trigger));
 }
 
 export function setupOrbits(): void {

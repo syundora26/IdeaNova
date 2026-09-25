@@ -73,6 +73,7 @@ export function setupHeader(smooth: Smooth): HeaderController {
   };
   const openMenu = () => {
     menu.hidden = false;
+    menu.inert = false;
     void menu.offsetWidth; // flush the `hidden` change so the .is-open fade actually transitions
     menu.classList.add('is-open');
     menuBtn.setAttribute('aria-expanded', 'true');
@@ -84,6 +85,7 @@ export function setupHeader(smooth: Smooth): HeaderController {
   };
   const closeMenu = () => {
     menu.classList.remove('is-open');
+    menu.inert = true; // not focusable while it fades out (hidden follows 450ms later)
     menuBtn.setAttribute('aria-expanded', 'false');
     menuBtn.setAttribute('aria-label', 'メニューを開く');
     main.removeAttribute('inert');

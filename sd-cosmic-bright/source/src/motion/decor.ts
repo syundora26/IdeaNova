@@ -1,22 +1,10 @@
-import { gsap } from '../scroll/smooth';
-
-/** P1 step order, W1 stroke lengths, H3 hero focus, B3 meteor. The CSS in motion.css does the drawing. */
+/** P1 step order, W1 stroke lengths, B3 meteor. The CSS in motion.css does the drawing. */
 export function setupDecor(): void {
   document.querySelectorAll<HTMLElement>('.step').forEach((step, i) => step.style.setProperty('--seq', String(i)));
   document.querySelectorAll<SVGGeometryElement>('.work__thumb svg :is(path, ellipse)').forEach((shape) => {
     shape.style.setProperty('--len', String(Math.ceil(shape.getTotalLength())));
   });
-  focusHero();
   meteor();
-}
-
-/** H3: the planet settles from scale 1.03 to 1 once decoded. Transform only; the LCP image is never hidden. */
-function focusHero(): void {
-  const img = document.querySelector<HTMLImageElement>('.hero__art img');
-  if (!img) return;
-  gsap.set(img, { scale: 1.03 });
-  const settle = () => { gsap.to(img, { scale: 1, duration: 2.4, ease: 'expo.out' }); };
-  img.decode().then(settle, settle);
 }
 
 /** B3: one thin streak in the fixed background, same angle/band as the meteor painted in starfield.webp. */
