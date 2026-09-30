@@ -114,7 +114,7 @@ export function HeroPhotographs({ geometry }: { geometry: SceneGeometry }) {
   </div>;
 }
 export function HeroProducts() {
-  return <CorporatePhoto className="ref-hero-products" src={corporateImages.products} alt="化粧水・クリーム・チューブの化粧品イメージ。正式商品ではありません" fit="contain" eager />;
+  return <CorporatePhoto className="ref-hero-products" src={corporateImages.products} alt="XLuxesの化粧水・クリーム・美容液などの化粧品" fit="contain" eager />;
 }
 export function BusinessPhotographs({ geometry, flower = corporateImages.flower, harvest = corporateImages.harvest }: { geometry: SceneGeometry; flower?: string; harvest?: string }) {
   const id = useId();
