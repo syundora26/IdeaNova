@@ -1,362 +1,407 @@
 [
   {
-    "id": "01_italian_original_ui",
-    "file": "designs/01_italian_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "italian",
-    "dominant": "#f8e8e8"
+    "id": "design_01",
+    "no": 1,
+    "file": "designs/design_01.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "イタリアン",
+    "brand": "TRATTORIA LUCE"
   },
   {
-    "id": "02_architecture",
-    "file": "designs/02_architecture.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "architecture",
-    "dominant": "#f8e8e8"
-  },
-  {
-    "id": "03_salon",
-    "file": "designs/03_salon.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "salon",
-    "dominant": "#f8f8e8"
-  },
-  {
-    "id": "04_cafe",
-    "file": "designs/04_cafe.webp",
-    "width": 731,
-    "height": 2152,
-    "label": "cafe",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "05_bakery",
-    "file": "designs/05_bakery.webp",
-    "width": 774,
-    "height": 2032,
-    "label": "bakery",
-    "dominant": "#f8f8e8"
-  },
-  {
-    "id": "06_yakitori",
-    "file": "designs/06_yakitori.webp",
-    "width": 725,
-    "height": 2167,
-    "label": "yakitori",
-    "dominant": "#f8e8e8"
-  },
-  {
-    "id": "07_yakiniku",
-    "file": "designs/07_yakiniku.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "yakiniku",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "08_sushi",
-    "file": "designs/08_sushi.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "sushi",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "09_patisserie",
-    "file": "designs/09_patisserie.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "patisserie",
-    "dominant": "#f8e8e8"
-  },
-  {
-    "id": "10_florist",
-    "file": "designs/10_florist.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "florist",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "11_wedding_venue",
-    "file": "designs/11_wedding_venue.webp",
-    "width": 743,
-    "height": 2117,
-    "label": "wedding venue",
-    "dominant": "#f8f8e8"
-  },
-  {
-    "id": "12_ryokan",
-    "file": "designs/12_ryokan.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "ryokan",
-    "dominant": "#f8f8e8"
-  },
-  {
-    "id": "13_seaside_hotel",
-    "file": "designs/13_seaside_hotel.webp",
-    "width": 726,
-    "height": 2167,
-    "label": "seaside hotel",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "14_glamping",
-    "file": "designs/14_glamping.webp",
-    "width": 731,
-    "height": 2152,
-    "label": "glamping",
-    "dominant": "#f8f8e8"
-  },
-  {
-    "id": "15_travel_agency",
-    "file": "designs/15_travel_agency.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "travel agency",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "16_neighborhood_real_estate_original_ui",
-    "file": "designs/16_neighborhood_real_estate_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "neighborhood real estate",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "17_portrait_photography_original_ui",
-    "file": "designs/17_portrait_photography_original_ui.webp",
-    "width": 726,
-    "height": 2167,
-    "label": "portrait photography",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "18_yoga_studio_original_ui",
-    "file": "designs/18_yoga_studio_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "yoga studio",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "19_pilates_studio_original_ui",
-    "file": "designs/19_pilates_studio_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "pilates studio",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "20_personal_training_original_ui",
-    "file": "designs/20_personal_training_original_ui.webp",
-    "width": 735,
-    "height": 2139,
-    "label": "personal training",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "21_dental_clinic_original_ui",
-    "file": "designs/21_dental_clinic_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "dental clinic",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "22_dermatology_clinic_original_ui",
-    "file": "designs/22_dermatology_clinic_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "dermatology clinic",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "23_veterinary_clinic_original_ui",
-    "file": "designs/23_veterinary_clinic_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "veterinary clinic",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "24_pet_grooming_original_ui",
-    "file": "designs/24_pet_grooming_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "pet grooming",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "25_language_school_original_ui",
-    "file": "designs/25_language_school_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "language school",
-    "dominant": "#f8f8f8"
-  },
-  {
-    "id": "26_music_school",
-    "file": "designs/26_music_school.webp",
+    "id": "design_02",
+    "no": 2,
+    "file": "designs/design_02.webp",
     "width": 725,
     "height": 2170,
-    "label": "music school",
-    "dominant": "#f8f8f8"
+    "industry": "建築設計",
+    "brand": "ATELIER SEN"
   },
   {
-    "id": "27_cooking_school",
-    "file": "designs/27_cooking_school.webp",
+    "id": "design_03",
+    "no": 3,
+    "file": "designs/design_03.webp",
     "width": 724,
     "height": 2172,
-    "label": "cooking school",
-    "dominant": "#f8f8f8"
+    "industry": "美容サロン",
+    "brand": "nue salon"
   },
   {
-    "id": "28_pottery_studio",
-    "file": "designs/28_pottery_studio.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "pottery studio",
-    "dominant": "#f8f8e8"
+    "id": "design_04",
+    "no": 4,
+    "file": "designs/design_04.webp",
+    "width": 725,
+    "height": 2170,
+    "industry": "カフェ",
+    "brand": "KADO COFFEE"
   },
   {
-    "id": "29_law_firm",
-    "file": "designs/29_law_firm.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "law firm",
-    "dominant": "#f8f8f8"
+    "id": "design_05",
+    "no": 5,
+    "file": "designs/design_05.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ベーカリー",
+    "brand": "麦と灯"
   },
   {
-    "id": "30_tax_accounting",
-    "file": "designs/30_tax_accounting.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "tax accounting",
-    "dominant": "#f8f8f8"
+    "id": "design_06",
+    "no": 6,
+    "file": "designs/design_06.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "焼き鳥",
+    "brand": "炭と羽"
   },
   {
-    "id": "31_recruitment_original_ui",
-    "file": "designs/31_recruitment_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "recruitment",
-    "dominant": "#f8f8f8"
+    "id": "design_07",
+    "no": 7,
+    "file": "designs/design_07.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "焼肉",
+    "brand": "炭庭"
   },
   {
-    "id": "32_branding_original_ui",
-    "file": "designs/32_branding_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "branding",
-    "dominant": "#f8f8f8"
+    "id": "design_08",
+    "no": 8,
+    "file": "designs/design_08.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "寿司",
+    "brand": "鮨 澄"
   },
   {
-    "id": "33_film_original_ui",
-    "file": "designs/33_film_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "film",
-    "dominant": "#f8f8f8"
+    "id": "design_09",
+    "no": 9,
+    "file": "designs/design_09.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "パティスリー",
+    "brand": "PÂTISSERIE LUMI"
   },
   {
-    "id": "34_saas_original_ui",
-    "file": "designs/34_saas_original_ui.webp",
-    "width": 728,
-    "height": 2161,
-    "label": "saas",
-    "dominant": "#f8f8f8"
+    "id": "design_10",
+    "no": 10,
+    "file": "designs/design_10.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "花屋",
+    "brand": "花と余白"
   },
   {
-    "id": "35_metal_original_ui",
-    "file": "designs/35_metal_original_ui.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "metal",
-    "dominant": "#f8f8f8"
+    "id": "design_11",
+    "no": 11,
+    "file": "designs/design_11.webp",
+    "width": 750,
+    "height": 2098,
+    "industry": "ウェディング",
+    "brand": "庭と誓い"
   },
   {
-    "id": "36_logistics",
-    "file": "designs/36_logistics.webp",
-    "width": 728,
-    "height": 2161,
-    "label": "logistics",
-    "dominant": "#f8f8f8"
+    "id": "design_12",
+    "no": 12,
+    "file": "designs/design_12.webp",
+    "width": 750,
+    "height": 2098,
+    "industry": "旅館",
+    "brand": "山端の宿"
   },
   {
-    "id": "37_farm_produce",
-    "file": "designs/37_farm_produce.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "farm produce",
-    "dominant": "#f8f8e8"
+    "id": "design_13",
+    "no": 13,
+    "file": "designs/design_13.webp",
+    "width": 793,
+    "height": 1983,
+    "industry": "海辺ホテル",
+    "brand": "HOTEL AO"
   },
   {
-    "id": "38_craft_brewery",
-    "file": "designs/38_craft_brewery.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "craft brewery",
-    "dominant": "#f8f8e8"
+    "id": "design_14",
+    "no": 14,
+    "file": "designs/design_14.webp",
+    "width": 772,
+    "height": 2036,
+    "industry": "グランピング",
+    "brand": "FIELD NOTE"
   },
   {
-    "id": "39_apparel",
-    "file": "designs/39_apparel.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "apparel",
-    "dominant": "#f8f8e8"
+    "id": "design_15",
+    "no": 15,
+    "file": "designs/design_15.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "旅行会社",
+    "brand": "TABI LETTER"
   },
   {
-    "id": "40_jewelry",
-    "file": "designs/40_jewelry.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "jewelry",
-    "dominant": "#f8f8e8"
+    "id": "design_16",
+    "no": 16,
+    "file": "designs/design_16.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "不動産",
+    "brand": "MACHI TO IE"
   },
   {
-    "id": "41_eyewear",
-    "file": "designs/41_eyewear.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "eyewear",
-    "dominant": "#f8f8f8"
+    "id": "design_17",
+    "no": 17,
+    "file": "designs/design_17.webp",
+    "width": 789,
+    "height": 1994,
+    "industry": "写真スタジオ",
+    "brand": "STUDIO MADO"
   },
   {
-    "id": "42_bicycle",
-    "file": "designs/42_bicycle.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "bicycle",
-    "dominant": "#f8f8f8"
+    "id": "design_18",
+    "no": 18,
+    "file": "designs/design_18.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ヨガ",
+    "brand": "hikari yoga"
   },
   {
-    "id": "43_car_detailing",
-    "file": "designs/43_car_detailing.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "car detailing",
-    "dominant": "#f8f8f8"
+    "id": "design_19",
+    "no": 19,
+    "file": "designs/design_19.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ピラティス",
+    "brand": "FORMA PILATES"
   },
   {
-    "id": "44_home_cleaning",
-    "file": "designs/44_home_cleaning.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "home cleaning",
-    "dominant": "#f8f8f8"
+    "id": "design_20",
+    "no": 20,
+    "file": "designs/design_20.webp",
+    "width": 749,
+    "height": 2100,
+    "industry": "パーソナルトレーニング",
+    "brand": "RE MOVE"
   },
   {
-    "id": "45_coworking",
-    "file": "designs/45_coworking.webp",
-    "width": 724,
-    "height": 2172,
-    "label": "coworking",
-    "dominant": "#f8f8e8"
+    "id": "design_21",
+    "no": 21,
+    "file": "designs/design_21.webp",
+    "width": 754,
+    "height": 2084,
+    "industry": "歯科",
+    "brand": "KIRARI DENTAL"
+  },
+  {
+    "id": "design_22",
+    "no": 22,
+    "file": "designs/design_22.webp",
+    "width": 773,
+    "height": 2033,
+    "industry": "皮膚科",
+    "brand": "HADAMORI CLINIC"
+  },
+  {
+    "id": "design_23",
+    "no": 23,
+    "file": "designs/design_23.webp",
+    "width": 751,
+    "height": 2094,
+    "industry": "動物病院",
+    "brand": "PAW AND HOME"
+  },
+  {
+    "id": "design_24",
+    "no": 24,
+    "file": "designs/design_24.webp",
+    "width": 749,
+    "height": 2100,
+    "industry": "トリミング",
+    "brand": "mofmof studio"
+  },
+  {
+    "id": "design_25",
+    "no": 25,
+    "file": "designs/design_25.webp",
+    "width": 839,
+    "height": 1874,
+    "industry": "語学",
+    "brand": "KOTO LANGUAGE"
+  },
+  {
+    "id": "design_26",
+    "no": 26,
+    "file": "designs/design_26.webp",
+    "width": 750,
+    "height": 2098,
+    "industry": "音楽教室",
+    "brand": "OTOHA MUSIC"
+  },
+  {
+    "id": "design_27",
+    "no": 27,
+    "file": "designs/design_27.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "料理教室",
+    "brand": "TABLE LAB"
+  },
+  {
+    "id": "design_28",
+    "no": 28,
+    "file": "designs/design_28.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "陶芸教室",
+    "brand": "TSUCHI NOTE"
+  },
+  {
+    "id": "design_29",
+    "no": 29,
+    "file": "designs/design_29.webp",
+    "width": 779,
+    "height": 2020,
+    "industry": "法律事務所",
+    "brand": "KOTOHA LAW"
+  },
+  {
+    "id": "design_30",
+    "no": 30,
+    "file": "designs/design_30.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "税理士",
+    "brand": "HARE ACCOUNTING"
+  },
+  {
+    "id": "design_31",
+    "no": 31,
+    "file": "designs/design_31.webp",
+    "width": 809,
+    "height": 1942,
+    "industry": "人材紹介",
+    "brand": "BRIDGE WORKS"
+  },
+  {
+    "id": "design_32",
+    "no": 32,
+    "file": "designs/design_32.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ブランディング",
+    "brand": "FORM AND FIELD"
+  },
+  {
+    "id": "design_33",
+    "no": 33,
+    "file": "designs/design_33.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "動画制作",
+    "brand": "FRAME WORKS"
+  },
+  {
+    "id": "design_34",
+    "no": 34,
+    "file": "designs/design_34.webp",
+    "width": 749,
+    "height": 2100,
+    "industry": "業務支援SaaS",
+    "brand": "TOLU"
+  },
+  {
+    "id": "design_35",
+    "no": 35,
+    "file": "designs/design_35.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "精密金属加工",
+    "brand": "KANEKO PRECISION"
+  },
+  {
+    "id": "design_36",
+    "no": 36,
+    "file": "designs/design_36.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "物流",
+    "brand": "ROUTE 8"
+  },
+  {
+    "id": "design_37",
+    "no": 37,
+    "file": "designs/design_37.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "農園直販",
+    "brand": "TANE TO TABLE"
+  },
+  {
+    "id": "design_38",
+    "no": 38,
+    "file": "designs/design_38.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "クラフトビール",
+    "brand": "BREW 47"
+  },
+  {
+    "id": "design_39",
+    "no": 39,
+    "file": "designs/design_39.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "アパレル",
+    "brand": "NUE CLOTHING"
+  },
+  {
+    "id": "design_40",
+    "no": 40,
+    "file": "designs/design_40.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ジュエリー",
+    "brand": "SERA JEWELRY"
+  },
+  {
+    "id": "design_41",
+    "no": 41,
+    "file": "designs/design_41.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "眼鏡",
+    "brand": "MEGURU EYEWEAR"
+  },
+  {
+    "id": "design_42",
+    "no": 42,
+    "file": "designs/design_42.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "自転車",
+    "brand": "RIDE AND DAY"
+  },
+  {
+    "id": "design_43",
+    "no": 43,
+    "file": "designs/design_43.webp",
+    "width": 756,
+    "height": 2079,
+    "industry": "カーディテーリング",
+    "brand": "DETAIL LAB"
+  },
+  {
+    "id": "design_44",
+    "no": 44,
+    "file": "designs/design_44.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "ハウスクリーニング",
+    "brand": "SUMIKA CLEAN"
+  },
+  {
+    "id": "design_45",
+    "no": 45,
+    "file": "designs/design_45.webp",
+    "width": 749,
+    "height": 2098,
+    "industry": "コワーキング",
+    "brand": "COMMON TABLE"
   }
 ]

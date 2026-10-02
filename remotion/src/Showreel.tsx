@@ -2,6 +2,7 @@ import React from 'react';
 import { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';
 import { FinalFade, Flash, Hud } from './components/Overlay';
 import { ALL_TEXT } from './copy';
+import { DESIGN_TEXT } from './designs';
 import { useFonts } from './fonts';
 import { ColdOpen } from './scenes/ColdOpen';
 import { Cta } from './scenes/Cta';
@@ -30,7 +31,7 @@ const SCENE_COMPONENTS: Record<SceneKey, React.FC> = {
 };
 
 export const Showreel: React.FC = () => {
-  useFonts(ALL_TEXT);
+  useFonts(ALL_TEXT + DESIGN_TEXT);
   return (
     <AbsoluteFill style={{ background: C.bg, color: C.fg, fontFamily: F.jp, overflow: 'hidden' }}>
       <Audio src={staticFile('audio/track.mp3')} />

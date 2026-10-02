@@ -24,7 +24,7 @@ node remotion/scripts/stills.mjs   # 検証用の静止画をまとめて out/st
 | `src/copy.ts` | 動画内の全文言。文言の修正はここだけで済みます |
 | `src/scenes/` | 10 シーン（コールドオープン → 45 デザイン → 技術スタック → フルスクラッチ → SEO → コード品質 → 3D → ショーケース → CTA → エンドカード） |
 | `src/components/` | ページモックアップ、見出しマーカー、コード、HUD、フラッシュなどの共通部品 |
-| `public/designs/` | モックアップ 45 点（WebP）と `manifest.json` |
+| `public/designs/` | モックアップ 45 点（WebP、SMASK_45_designs 版）と `manifest.json`。番号・業種・ブランド名・寸法を持ち、モンタージュのラベルに使います |
 | `public/audio/track.mp3` | `scripts/make-music.mjs` が合成した BGM。外部素材は使っていません |
 
 ## エンドカードの差し替え

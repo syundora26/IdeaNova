@@ -8,7 +8,7 @@ import { C, F } from '../theme';
 import { BEAT } from '../timeline';
 
 // One design per beat, 16 beats.
-const ORDER = [3, 2, 7, 10, 12, 0, 17, 20, 26, 33, 38, 39, 42, 44, 11, 5];
+const ORDER = [0, 2, 3, 8, 12, 13, 16, 20, 26, 33, 35, 38, 39, 41, 42, 44];
 
 export const Montage: React.FC = () => {
   const f = useCurrentFrame();

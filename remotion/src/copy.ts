@@ -47,54 +47,6 @@ export const COPY = {
   company: '株式会社SD',
 };
 
-export const JP_LABELS: Record<string, string> = {
-  italian: 'イタリアン',
-  architecture: '建築設計',
-  salon: 'ヘアサロン',
-  cafe: 'カフェ',
-  bakery: 'ベーカリー',
-  yakitori: '焼き鳥',
-  yakiniku: '焼肉',
-  sushi: '寿司',
-  patisserie: 'パティスリー',
-  florist: 'フラワーショップ',
-  'wedding venue': 'ウェディング',
-  ryokan: '旅館',
-  'seaside hotel': 'リゾートホテル',
-  glamping: 'グランピング',
-  'travel agency': '旅行代理店',
-  'neighborhood real estate': '不動産',
-  'portrait photography': 'フォトスタジオ',
-  'yoga studio': 'ヨガスタジオ',
-  'pilates studio': 'ピラティス',
-  'personal training': 'パーソナルジム',
-  'dental clinic': '歯科クリニック',
-  'dermatology clinic': '皮膚科',
-  'veterinary clinic': '動物病院',
-  'pet grooming': 'ペットサロン',
-  'language school': '語学スクール',
-  'music school': '音楽教室',
-  'cooking school': '料理教室',
-  'pottery studio': '陶芸工房',
-  'law firm': '法律事務所',
-  'tax accounting': '税理士事務所',
-  recruitment: '採用サイト',
-  branding: 'ブランディング',
-  film: '映像制作',
-  saas: 'SaaS',
-  metal: '金属加工',
-  logistics: '物流',
-  'farm produce': '農産物直売',
-  'craft brewery': 'クラフトビール',
-  apparel: 'アパレル',
-  jewelry: 'ジュエリー',
-  eyewear: 'アイウェア',
-  bicycle: '自転車',
-  'car detailing': 'カーディテイリング',
-  'home cleaning': 'ハウスクリーニング',
-  coworking: 'コワーキング',
-};
-
 export const CODE_LINES = [
   "import { createApp } from './app';",
   'export const Hero: FC<Props> = ({ title, image }) => (',
@@ -114,6 +66,5 @@ export const CODE_LINES = [
 
 export const ALL_TEXT =
   JSON.stringify(COPY) +
-  Object.values(JP_LABELS).join('') +
   CODE_LINES.join('') +
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/×・✓→←①②③';
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÂÉÈ0123456789/×・✓→←①②③';
