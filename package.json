@@ -32,7 +32,12 @@
     "test:lower": "node tests/lower-finish.cjs",
     "build:share": "tsc --noEmit && vite build --config vite.share.config.ts --mode share-corporate && vite build --config vite.share.config.ts --mode share-cosmetics && node scripts/finish-share.cjs",
     "test:share": "node tests/share-preview.cjs",
-    "preview:share": "node scripts/serve-share.cjs"
+    "preview:share": "node scripts/serve-share.cjs",
+    "video:studio": "remotion studio",
+    "video:render": "remotion render SDShowreel out/sd-showreel.mp4",
+    "video:still": "remotion still SDShowreel",
+    "video:music": "node remotion/scripts/make-music.mjs",
+    "video:typecheck": "tsc -p remotion/tsconfig.json"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "^5.2.6",

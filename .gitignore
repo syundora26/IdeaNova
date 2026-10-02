@@ -10,3 +10,7 @@ reference/
 .env.local
 .env.*.local
 qa/separation/*.pid
+
+# Remotion video
+out/
+remotion/public/audio/*.wav
